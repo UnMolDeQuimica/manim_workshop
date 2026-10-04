@@ -1,0 +1,13 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+{
+  <Default {...Astro.props}>
+    <slot />
+  </Default>
+  <footer>
+    <p>Miguel Ángel Rodríguez Vidal - PyCon26</p>
+  </footer>
+}

@@ -1,0 +1,338 @@
+---
+import { Code } from '@astrojs/starlight/components';
+
+interface Props {
+  file: string;
+  start?: number;
+  end?: number;
+  mark?: string;
+  ins?: string;
+  del?: string;
+}
+
+const {
+  file,
+  start = 1,
+  end,
+  mark,
+  ins,
+  del,
+} = Astro.props;
+
+const imported = await import(`../manim_code/${file}?raw`);
+const source = imported.default as string;
+
+const sourceLines = source.split('\n');
+
+const firstLine = Math.max(1, start);
+const lastLine = Math.min(end ?? sourceLines.length, sourceLines.length);
+
+const codeLines: string[] = [];
+
+// Maps original source line number -> displayed line number.
+const displayedLine = new Map<number, number>();
+
+const highlightedSource = new Set<number>();
+const insertedSource = new Set<number>();
+const deletedSource = new Set<number>();
+
+let highlightStart: number | null = null;
+let insertStart: number | null = null;
+let deleteStart: number | null = null;
+
+/**
+ * Only recognize a docs marker when the line consists entirely
+ * of the marker comment.
+ *
+ * Examples:
+ *
+ *   # docs:highlight
+ *   # docs:highlight-start
+ *   # docs:highlight-end
+ *
+ * Indentation is allowed.
+ */
+function getMarker(line: string): string | null {
+  const match = line.match(
+    /^\s*#\s*docs:(highlight|insert|delete)(?:-(start|end))?\s*$/
+  );
+
+  if (!match) return null;
+
+  return `docs:${match[1]}${match[2] ? `-${match[2]}` : ''}`;
+}
+
+/**
+ * Remove a leading # from rendered code.
+ *
+ * Only a # at the actual beginning of the line is removed.
+ *
+ *   # hello       -> hello
+ *   #hello        -> hello
+ *
+ * But:
+ *
+ *   # docs: ...   -> unchanged
+ *
+ * because docs: lines are intentionally preserved.
+ *
+ * Indented comments are left alone.
+ */
+function removeLeadingHash(line: string): string {
+  if (line.startsWith('#') && !line.startsWith('# docs:')) {
+    return line.slice(1).replace(/^ /, '');
+  }
+
+  return line;
+}
+
+for (let i = 0; i < sourceLines.length; i++) {
+  const sourceLine = i + 1;
+  const line = sourceLines[i];
+
+  const marker = getMarker(line);
+
+  const highlightStartMarker = marker === 'docs:highlight-start';
+  const highlightEndMarker = marker === 'docs:highlight-end';
+  const highlightMarker = marker === 'docs:highlight';
+
+  const insertStartMarker = marker === 'docs:insert-start';
+  const insertEndMarker = marker === 'docs:insert-end';
+  const insertMarker = marker === 'docs:insert';
+
+  const deleteStartMarker = marker === 'docs:delete-start';
+  const deleteEndMarker = marker === 'docs:delete-end';
+  const deleteMarker = marker === 'docs:delete';
+
+  /*
+   * Highlight markers
+   */
+  if (highlightStartMarker) {
+    highlightStart = sourceLine + 1;
+  }
+
+  if (highlightEndMarker && highlightStart !== null) {
+    for (let n = highlightStart; n < sourceLine; n++) {
+      highlightedSource.add(n);
+    }
+
+    highlightStart = null;
+  }
+
+  // FIX: single-line markers annotate the NEXT source line.
+  if (highlightMarker) {
+    highlightedSource.add(sourceLine + 1);
+  }
+
+  /*
+   * Insert markers
+   */
+  if (insertStartMarker) {
+    insertStart = sourceLine + 1;
+  }
+
+  if (insertEndMarker && insertStart !== null) {
+    for (let n = insertStart; n < sourceLine; n++) {
+      insertedSource.add(n);
+    }
+
+    insertStart = null;
+  }
+
+  // FIX: single-line markers annotate the NEXT source line.
+  if (insertMarker) {
+    insertedSource.add(sourceLine + 1);
+  }
+
+  /*
+   * Delete markers
+   */
+  if (deleteStartMarker) {
+    deleteStart = sourceLine + 1;
+  }
+
+  if (deleteEndMarker && deleteStart !== null) {
+    for (let n = deleteStart; n < sourceLine; n++) {
+      deletedSource.add(n);
+    }
+
+    deleteStart = null;
+  }
+
+  // FIX: single-line markers annotate the NEXT source line.
+  if (deleteMarker) {
+    deletedSource.add(sourceLine + 1);
+  }
+
+  // docs marker lines themselves aren't rendered.
+  if (marker !== null) {
+    continue;
+  }
+
+  // Outside requested range.
+  if (sourceLine < firstLine || sourceLine > lastLine) {
+    continue;
+  }
+
+  /*
+   * Remove a leading # from the rendered version.
+   *
+   * This happens after marker processing, so docs: comments
+   * aren't accidentally modified.
+   */
+  const renderedLine = removeLeadingHash(line);
+
+  codeLines.push(renderedLine);
+
+  // Expressive Code sees this displayed line number.
+  displayedLine.set(sourceLine, codeLines.length);
+}
+
+/*
+ * Handle an unclosed start marker by applying it to the
+ * remainder of the file.
+ */
+if (highlightStart !== null) {
+  for (let n = highlightStart; n <= sourceLines.length; n++) {
+    highlightedSource.add(n);
+  }
+}
+
+if (insertStart !== null) {
+  for (let n = insertStart; n <= sourceLines.length; n++) {
+    insertedSource.add(n);
+  }
+}
+
+if (deleteStart !== null) {
+  for (let n = deleteStart; n <= sourceLines.length; n++) {
+    deletedSource.add(n);
+  }
+}
+
+function parseMarkers(value?: string): number[] {
+  if (!value) return [];
+
+  const result: number[] = [];
+
+  for (const part of value.split(',')) {
+    const trimmed = part.trim();
+
+    if (!trimmed) continue;
+
+    const range = trimmed.match(/^(\d+)-(\d+)$/);
+
+    if (range) {
+      const start = Number(range[1]);
+      const end = Number(range[2]);
+
+      for (let n = start; n <= end; n++) {
+        result.push(n);
+      }
+    } else {
+      const line = Number(trimmed);
+
+      if (Number.isInteger(line) && line > 0) {
+        result.push(line);
+      }
+    }
+  }
+
+  return result;
+}
+
+function sourceToDisplayed(sourceLines: number[]): number[] {
+  return sourceLines
+    .map((line) => displayedLine.get(line))
+    .filter((line): line is number => line !== undefined);
+}
+
+// File annotations.
+const highlighted = sourceToDisplayed([...highlightedSource]);
+const inserted = sourceToDisplayed([...insertedSource]);
+const deleted = sourceToDisplayed([...deletedSource]);
+
+// Tag annotations use ORIGINAL file line numbers.
+highlighted.push(...sourceToDisplayed(parseMarkers(mark)));
+inserted.push(...sourceToDisplayed(parseMarkers(ins)));
+deleted.push(...sourceToDisplayed(parseMarkers(del)));
+
+const code = codeLines.join('\n');
+
+// --- Build the copy-version (deleted lines stripped) ---
+
+// Set of displayed line numbers that are marked as deleted.
+const deletedDisplayed = new Set(deleted);
+
+// Keep every displayed line whose index is NOT deleted.
+const copyLines = codeLines.filter(
+  (_, idx) => !deletedDisplayed.has(idx + 1)
+);
+
+const copyCode = copyLines.join('\n');
+
+// Unique id so multiple components on one page don't collide.
+const uid = `code-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+<div class="code-with-copy" data-copy-code={copyCode} data-uid={uid}>
+  <Code
+    code={code}
+    lang="py"
+    title={file}
+    mark={[...new Set(highlighted)]}
+    ins={[...new Set(inserted)]}
+    del={[...new Set(deleted)]}
+  />
+</div>
+
+<script>
+  function patchCopyButtons() {
+    document.querySelectorAll<HTMLElement>('.code-with-copy').forEach((wrapper) => {
+      const cleaned = wrapper.getAttribute('data-copy-code');
+      if (!cleaned) return;
+
+      // Expressive Code renders a copy button inside the block.
+      // Class name is `.copy` on the button container in EC v0.3x.
+      const copyBtn =
+        wrapper.querySelector<HTMLButtonElement>('button.copy') ||
+        wrapper.querySelector<HTMLButtonElement>('.copy button');
+
+      if (!copyBtn) return;
+      if (copyBtn.dataset.copyPatched === 'true') return;
+      copyBtn.dataset.copyPatched = 'true';
+
+      // Capture phase: run BEFORE Expressive Code's own handler
+      // so we can replace the clipboard content.
+      copyBtn.addEventListener(
+        'click',
+        (event) => {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+
+          navigator.clipboard.writeText(cleaned).then(() => {
+            // Give the user the same visual feedback EC would.
+            const original = copyBtn.getAttribute('data-copied-text') || 'Copied!';
+            copyBtn.classList.add('copied');
+            const prev = copyBtn.getAttribute('aria-label');
+            copyBtn.setAttribute('aria-label', original);
+
+            setTimeout(() => {
+              copyBtn.classList.remove('copied');
+              if (prev) copyBtn.setAttribute('aria-label', prev);
+            }, 1500);
+          });
+        },
+        true
+      );
+    });
+  }
+
+  // Run on initial load and on every Astro/Starlight client-side navigation.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', patchCopyButtons);
+  } else {
+    patchCopyButtons();
+  }
+  document.addEventListener('astro:page-load', patchCopyButtons);
+</script>

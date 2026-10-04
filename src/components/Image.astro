@@ -1,0 +1,10 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+}
+
+const { src, title = 'Image' } = Astro.props;
+---
+
+<img width="100%" aria-label={title} src={src}></img>

@@ -1,0 +1,41 @@
+---
+interface Props {
+  author?: string;
+  source?: string;
+}
+const { author, source } = Astro.props;
+import { Icon } from '@astrojs/starlight/components';
+---
+
+
+<blockquote class="custom-quote">
+<div style="display: flex; align-items: center; gap: 0.5rem;">
+    <Icon
+        name="open-book"
+        color="var(--sl-color-text-accent)"
+        size="1.5rem"
+    />
+    {source && <span style="min-width: 0;"> — {source}</span>}
+</div>
+  <p><slot /></p>
+  {author && <cite>— {author}</cite>}
+<style>
+  .custom-quote {
+    border-left: 4px double var(--sl-color-text-accent);
+    border-bottom: 4px solid var(--sl-color-text-accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+  }
+  cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    text-align: right;
+    font-weight: bold;
+  }
+  span {
+    color: var(--sl-color-text-accent);
+    font-weight: bold;
+  }
+</style>
+</blockquote>

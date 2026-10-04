@@ -1,0 +1,35 @@
+---
+title: Benvinguts al taller de Manim!
+description: Get started building your docs site with Starlight.
+hero:
+  tagline: Avui aprendrem com fer animacions com la d'aqui abaix amb codi Python
+  image:
+    dark: ../../../assets/dark_logo.svg
+    light: ../../../assets/light_logo.svg
+  actions:
+    - text: Començar
+      link: /guides/example/
+      icon: right-arrow
+    - text: Llegir els docs de Manim
+      link: https://docs.manim.community/en/stable/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+import Video  from '../../../components/Video.astro'
+import welcomeCode from '../../../manim_code/welcome.py?raw'
+
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="metadata"
+>
+  <source src="/videos/LogoAnimation.mp4" type="video/mp4" />
+</video>
+
+
+<Code code={welcomeCode} lang="py" title={"logo_animation.py"}/>
