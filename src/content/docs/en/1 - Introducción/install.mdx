@@ -1,0 +1,133 @@
+---
+title: Instalación
+description: Breve explicación sobre cómo instalar Manim localmente.
+sidebar:
+  order: 2
+---
+
+import { Card, CardGrid, Aside, LinkButton, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+import welcomeCode from '../../../../manim_code/welcome.py?raw'
+import Video  from '@components/Video.astro'
+import Image  from '@components/Image.astro'
+import Quote  from '@components/Quote.astro'
+
+<Quote author="Ernest Hemingway" source="París era una fiesta">
+Lo que tienes que hacer es empezar.
+</Quote>
+
+
+<Aside type="tip">
+¡No te fíes de mi! <a href="https://docs.manim.community/en/stable/installation/uv.html" target="_blank">¡Ve a la documentación!</a>
+</Aside>
+
+
+
+## Instalación
+
+Hay varias formas de instalar `Manim`. En este taller seguiremos la versión recomendada de la documentación:
+
+<Steps>
+1. Instalar `uv` y otras dependencias:
+
+   <Tabs syncKey="os">
+     <TabItem label="Windows" icon="seti:windows">
+       <Code code={'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"'}  lang='sh'/>
+     </TabItem>
+
+     <TabItem label="MacOS" icon="apple">
+       <Steps>
+
+       1. Instalar el gestor de paquetes y proyectos `uv`:
+          <Code code={'curl -LsSf https://astral.sh/uv/install.sh | sh'}  lang='sh'/>
+
+       2. Instalar `brew`. Algunos quizá ya lo tengáis.
+          <Code code={'/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'}  lang='sh'/>
+
+       3. Instalar `cairo` y `pkg-config`:
+          <Code code={'brew install cairo pkg-config'} lang='sh'/>
+
+       </Steps>
+     </TabItem>
+
+     <TabItem label="Linux" icon="linux">
+       <Steps>
+       1. Instalar el gestor de paquetes y proyectos `uv`:
+          <Code code={'curl -LsSf https://astral.sh/uv/install.sh | sh'}  lang='sh'/>
+       2. Instalar librerías necesarias según vuestra distribución:
+          <Tabs>
+            <TabItem label="Debian-Ubuntu">
+              <Code code={'sudo apt update\nsudo apt install build-essential python3-dev libcairo2-dev libpango1.0-dev'} lang='sh'/>
+            </TabItem>
+            <TabItem label="Fedora">
+              <Code code={'sudo dnf install python3-devel pkg-config cairo-devel pango-devel'} lang='sh'/>
+            </TabItem>
+            <TabItem label="Arch">
+              <Code code={'sudo pacman -Syu base-devel cairo pango'} lang='sh'/>
+            </TabItem>
+          </Tabs>
+       </Steps>
+     </TabItem>
+   </Tabs>
+
+2. Instalar una versión de `python` adecuada con `uv`. Recomiendo superior a 3.11:
+   <Tabs syncKey="os">
+    <TabItem label="Windows" icon="seti:windows">
+      <Code code={'uv python install 3.11'}  lang='sh'/>
+    </TabItem>
+    <TabItem label="MacOS" icon="apple">
+      <Code code={'uv python install 3.11'}  lang='sh'/>
+    </TabItem>
+    <TabItem label="Linux" icon="linux">
+      <Code code={'uv python install 3.11'}  lang='sh'/>
+    </TabItem>
+   </Tabs>
+3. Crear un entorno virtual con `uv`:
+   <Tabs syncKey="os">
+    <TabItem label="Windows" icon="seti:windows">
+      <Code code={'uv init manim-workshop\ncd manim-workshop'}  lang='sh'/>
+    </TabItem>
+    <TabItem label="MacOS" icon="apple">
+      <Code code={'uv python install'}  lang='sh'/>
+    </TabItem>
+    <TabItem label="Linux" icon="linux">
+      <Code code={'uv python install'}  lang='sh'/>
+    </TabItem>
+   </Tabs>
+4. Instalar `Manim`:
+   <Tabs syncKey="os">
+   <TabItem label="Windows" icon="seti:windows">
+    <Code code={'uv add manim'}  lang='sh'/>
+   </TabItem>
+   <TabItem label="MacOS" icon="apple">
+    <Code code={'uv add manim'}  lang='sh'/>
+   </TabItem>
+   <TabItem label="Linux" icon="linux">
+    <Code code={'uv add manim'}  lang='sh'/>
+   </TabItem>
+   </Tabs>
+5. Instalar `Typst`:
+   <Tabs syncKey="os">
+   <TabItem label="Windows" icon="seti:windows">
+    <Code code={'uv add typst'}  lang='sh'/>
+   </TabItem>
+   <TabItem label="MacOS" icon="apple">
+    <Code code={'uv add typst'}  lang='sh'/>
+   </TabItem>
+   <TabItem label="Linux" icon="linux">
+    <Code code={'uv add typst'}  lang='sh'/>
+   </TabItem>
+   </Tabs>
+6. Verificar la instalación::
+   <Tabs syncKey="os">
+   <TabItem label="Windows" icon="seti:windows">
+    <Code code={'uv run manim checkhealth'}  lang='sh'/>
+   </TabItem>
+   <TabItem label="MacOS" icon="apple">
+    <Code code={'uv run manim checkhealth'}  lang='sh'/>
+   </TabItem>
+   <TabItem label="Linux" icon="linux">
+    <Code code={'uv run manim checkhealth'}  lang='sh'/>
+   </TabItem>
+   </Tabs>
+</Steps>

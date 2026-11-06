@@ -1,0 +1,70 @@
+---
+title: Grupos
+description: Groups, VGroups, VDicts
+sidebar:
+  order: 3
+---
+
+import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
+import Video  from '@components/Video.astro'
+import Image  from '@components/Image.astro'
+import Quote  from '@components/Quote.astro'
+import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
+import MediaCode  from '@components/MediaCode.astro'
+import AccordionItem from '@components/AccordionItem.astro'
+
+
+Hasta ahora hemos visto como trabajar con objetos individuales. Sin embargo, a lo largo de los ejemplos hemos visto que se pueden agrupar `Mobjects` para realizar diferentes acciones. 
+
+
+## Group y VGroup
+
+Los `Mobjects` genéricos se pueden agrupar utilizando la clase `Group`.
+
+<MediaCode type="image" imageData={{src: "/images/mobjects_example.png"}} codeData={{file: "mobjects_examples.py", mark: '32-37'}}/>
+
+Los `Group` actúan como una fusión entre un `Mobject` y un `array` o una lista, de forma que podemos seleccionar los objetos por índice, agregar más objetos al grupo, quitarlos, reemplazarlos o iterar sobre ellos, pero también podemos usarlo para agregarlos a una escena como en el ejemplo de arriba.
+
+Por otro lado, tenemos los `VGroup`, que se utiliza específicamente cuando trabajamos con `VMobjects` y queremos conservar algunas de sus propiedades vectoriales.
+
+Tanto `Group` como `VGroup` nos permiten realizar acciones como alinear con los objetos `arrange`  u ordenarlos en una cuadrícula con `arrange_in_grid()`. 
+
+Su principales utilidades son poder tratar varios objetos como uno solo y poder iterar sobre ellos. 
+
+<Aside>Recuerda: Los `Group` son para `Mobjects` en general y los `VGroup` específicamente para `VMobjects`</Aside>
+
+## VDict
+
+Si `Group` y `VGroup` se comportan como un `array` de `Mobjects` y `VMobjects`, `VDict` se comporta como un diccionario para `VMobjects`, de forma que podemos ir agrupando los `VMobjects` por pares clave-valor. 
+
+Esto es muy útil si tenemos muchos objetos y queremos poder interactuar con ellos de forma independiente sin tener que preocuparnos mucho por su índice o si queremos enumerar objetos fácilmente.
+
+<MediaCode type="image" imageData={{src: "/images/vdict_example.png"}} codeData={{file: "vdict_example.py"}}/>
+
+## ¡Ejercicios!
+
+### Ejercicio 1
+
+Crea un `VGroup` que parezca un semáforo. Basta algo aproximado. Si no recuerdas en qué orden van los colores, aquí te dejo una imagen:
+
+<Image src="/images/luces-semaforo.jpg"/>
+
+<Aside type='tip'>Los objetos que agregues primero al `VGroup` estarán debajo de los más nuevos. Es cómo si lo pintaras primero en el lienzo y luego pintaras el resto encima.</Aside>
+<Aside type='tip'>¡Consejito extra! La función `arrange` utiliza una dirección. Las direcciones son arrays de 3 floats, aunque `Manim` tiene algunos por defecto como `UP`, `DOWN`, `LEFT`, `RIGHT`, `UL`, `UR`, `DL` y `DR` para representar arriba, abajo, izquierda, derecha, diagonal superior izquierda, diagonal superior derecha, diagonal inferior izquierda y diagonal inferior derecha respectivamente.</Aside>
+
+  <AccordionItem title="Solución al ejercicio 1">
+    <MediaCode type="image" imageData={{src: "/images/groups_ex_1.png"}} codeData={{file: "groups_ex_1.py"}}/>
+  </AccordionItem>
+### Ejercicio 2
+
+Crea un `VGroup` que parezca un una montañita de cartas o sobres. Algo así:
+
+<Image src="/images/folders_stack.jpeg"/>
+
+Basta con que uses rectángulos o una figura similar.
+
+<Aside type='tip'>La función `arrange` recibe un parámetro llamado `buff` con el que puedes controlar la distancia a la que se separan los objetos. ¡Juega un poco a ver que pasa!</Aside>
+
+  <AccordionItem title="Solución al ejercicio 2">
+    <MediaCode type="image" imageData={{src: "/images/groups_ex_2.png"}} codeData={{file: "groups_ex_2.py"}}/>
+  </AccordionItem>

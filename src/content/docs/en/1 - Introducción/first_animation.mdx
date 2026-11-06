@@ -1,0 +1,152 @@
+---
+title: Primera Animación
+description: Haremos nuestra primera animación
+sidebar:
+  order: 3
+---
+
+import { Card, CardGrid, Aside, LinkButton, Steps, Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+import welcomeCode from '../../../../manim_code/welcome.py?raw'
+import Video  from '@components/Video.astro'
+import Image  from '@components/Image.astro'
+import Quote  from '@components/Quote.astro'
+import PyCode  from '@components/PyCode.astro'
+import firstAnimation from '../../../../manim_code/first_animation.py?raw'
+
+
+export const manimShCodeExample = `uv run manim first_animation.py -p`
+export const heyYouHighlights = ['uv run manim']
+export const manimHighlights = ['manim first_animation.py']
+export const previewHighlights = ['-p']
+
+<Quote author="Julio Cortázar" source="Rayuela">
+Andábamos sin buscarnos pero sabiendo que andábamos para encontrarnos.
+</Quote>
+
+Ahora que ya tenemos `Manim` instalado y funcionando, es hora de ponerlo en marcha.
+
+## Nuestra primera animación
+Abrimos nuestro editor de texto favorito e introducimos el siguiente código:
+
+<PyCode file='first_animation.py' />
+
+Seguidamente, vamos a nuestra terminal:
+
+<Code code={manimShCodeExample} lang='sh' />
+
+Esto va a generar el siguiente video:
+
+<Video src='MyFirstAnimation.mp4' />
+
+## ¿Qué ha pasado? ¿Qué hemos hecho?
+Vamos a estudiar en orden qué hemos hecho y que ha pasado.
+
+### En el código
+
+A python le hemos dicho:
+
+<Steps>
+1. De la librería `Manim`, tráete todo todito lo que tengas.
+
+   <PyCode file='first_animation.py' mark='1'/>
+
+2. Crea una clase llamada `MyFirstAnimation` que herede de `Scene`
+
+   <PyCode file='first_animation.py' mark='3'/>
+
+3. Sobreescribe el método `construct` para que instancie un `Square` y le aplique la animación `Write`
+
+   <PyCode file='first_animation.py' mark='4-8'/>
+
+</Steps>
+
+### En la terminal
+En la terminal hemos dicho:
+<Steps>
+
+1. ¡Eh, tú, `uv`, llama a `Manim`!
+
+   <Code code={manimShCodeExample} lang='sh' mark={heyYouHighlights} />
+
+2. Ahora, `Manim`, renderiza lo que sea que haya en el archivo `first_animation.py`. 
+
+   <Code code={manimShCodeExample} lang='sh' mark={manimHighlights} />
+
+
+3. ¡Y quiero previsualizar!
+
+   <Code code={manimShCodeExample} lang='sh' mark={previewHighlights} />
+
+</Steps>
+
+### Resultado
+
+El resultado es el video tan chulo que hemos visto más arriba junto con otra serie de archivos:
+
+<FileTree>
+- manim-workshop
+  - first_animation.py
+  - media
+    - videos
+      - first_animation
+        - 1080p60
+          - partial_movie_files
+            - MyFirstAnimation
+              - `<hash>.mp4`
+              - partial_movie_file_list.txt
+          - MyFirstAnimation.mp4
+</FileTree>
+
+`Manim` ha generado una carpeta `media` dentro de la que hay otra llamada `videos`. Allí ha creado una carpeta usando el nombre de nuestro archivo python: `first_animation`. 
+
+Dentro de esa, otra carpeta con la calidad del video, en este caso `1080p60` dentro de la cual tenemos un video con el nombre de la clase que hemos creado y otra carpeta con fragmentos de la animación.
+
+Conforme avancemos el taller iremos llenando esta carpeta con más cosas. Por lo general `Manim` genera archivos bastante comprimidos, pero os recomiendo ir haciendo limpieza de vez en cuando.
+
+## Editando la animación
+
+Vamos ahora a crear otro archivo llamado `second_animations.py`. Dentro de él vamos a hacer modificaciones a nuestra animación inicial. 
+
+Primero de todo, vamos a copiar el contenido de `first_animation.py` pero modificando el nombre de la clase a `SecondAnimation`. Luego, vamos a darle un poco de color a este cuadrado tan soso.
+
+<PyCode 
+  file="second_animations.py"
+  end={15}
+/>
+
+Y, de nuevo, vamos a renderizar nuestra animación:
+
+```sh
+uv run manim second_animations.py -p
+```
+
+<Video src='MySecondAnimation.mp4' />
+
+Vamos con otro cambio, venga, nuestra tercera animación. Agregamos esto al código para hacer una animación en la que el cuadrado gire en lugar de dibujarse.
+
+<PyCode 
+  file="second_animations.py"
+  start={15}
+/>
+
+Si volvemos a llamar a `Manim` desde la terminal veremos algo nuevo:
+
+```sh typed
+$ uv run manim second_animations.py -p
+Manim Community v0.21.0
+
+1: MySecondAnimation
+2: MyThirdAnimation
+
+Choose number corresponding to desired scene/arguments.
+(Use comma separated list for multiple entries or use "*" to select all scenes.)
+Choice(s):
+$ 2
+```
+
+Aquí `Manim` ha detectado que tenemos dos clases que heredan de `Scene` en nuestro archivo `second_animations.py`, así que nos está preguntando cuál de las dos queremos renderizar. Le metemos el numerito correspondiente, en este caso el 2, y ahora sí que nos renderiza la animación nueva.
+
+<Video src="MyThirdAnimation.mp4" />
+
+**¡Menuda chulada!**
