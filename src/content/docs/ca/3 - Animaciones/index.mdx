@@ -1,6 +1,6 @@
 ---
-title: Animando nuestros Mobjects
-description: Resumen sobre qué es una animación en Manim
+title: Animant els nostres Mobjects
+description: Resum sobre què és una animació a Manim
 sidebar:
   order: 1
 ---
@@ -13,66 +13,65 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-¡Uff! Menudo paseo lo de los `Mobjects`. Vamos ahora a ahora a algo más dinámico: **Las animaciones**. Aquí también hay mucho que morder, pero empezaremos por lo básico.
+Uff! Quin recorregut amb els `Mobjects`. Passem ara a una cosa més dinàmica: **les animacions**. Aquí també hi ha molt per explorar, però començarem pel més bàsic.
 
-## Animando propiedades básicas
+## Animant propietats bàsiques
 
-En `Manim` las animaciones funcionan recalculando una propiedad de un `Mobject` de forma que vemos un cambio en la pantalla. Para esto tenemos varias opciones pero la más sencilla consiste en utilizar el método `play` de la clase `Scene` junto con el método `animate` de los `Mobjects`.
+A `Manim`, les animacions funcionen recalculant una propietat d'un `Mobject` de manera que veiem un canvi a la pantalla. Per fer-ho tenim diverses opcions, però la més senzilla consisteix a utilitzar el mètode `play` de la classe `Scene` juntament amb el mètode `animate` dels `Mobjects`.
 
-Al hacer esto, `Manim` recalcula la propiedad para cada fotograma y la muestra en pantalla. Una de las propiedades más sencillas que podemos modificar es la posición. En el apartado de `Mobjects` hablamos sobre como se pueden usar métodos como `shift`, `move_to` o `to_edge`. Vamos a aplicarlos en un ejemplo. 
+En fer això, `Manim` recalcula la propietat per a cada fotograma i la mostra a la pantalla. Una de les propietats més senzilles que podem modificar és la posició. A l'apartat de `Mobjects` hem parlat de com es poden utilitzar mètodes com `shift`, `move_to` o `to_edge`. Apliquem-los en un exemple.
 
 <MediaCode type="video" videoData={{src: "position_animation_example.mp4"}} codeData={{file: "position_animation_example.py"}}/>
 
-Por supuesto, podemos animar muchas otras propiedades, especialmente las que ya conocemos: tamaño, color, rotación, opacidad, etc.
+Per descomptat, podem animar moltes altres propietats, especialment les que ja coneixem: mida, color, rotació, opacitat, etc.
 
 <MediaCode type="video" videoData={{src: "properties_animation_example.mp4"}} codeData={{file: "properties_animation_example.py"}}/>
 
 
-## Cambiando el ritmo
+## Canviant el ritme
 
-La animación pinta bien, pero ahora mismo todas las animaciones duran exactamente lo mismo y no hay pausas entre ellas.
+L'animació té bona pinta, però ara mateix totes les animacions duren exactament el mateix i no hi ha pauses entre elles.
 
-Podemos cambiar la duración de las animaciones utilizando el parámetro `run_time` de la función `play`.
+Podem canviar la durada de les animacions utilitzant el paràmetre `run_time` de la funció `play`.
 
-Para agregar pausas podemos usar el método `wait` de la clase `Scene`.
+Per afegir pauses podem utilitzar el mètode `wait` de la classe `Scene`.
 
 <MediaCode type="video" videoData={{src: "paused_animation_example.mp4"}} codeData={{file: "paused_animation_example.py"}}/>
 
-## He devenido target_mobject, el destructor de mundos
+## M'he convertit en target_mobject, el destructor de mons
 
-Otro método muy interesante de los `Mobjects` es `become`. Cuando `Manim` calcula una animación, lo que suele hacer es una interpolación entre las propiedades del objeto inicial y las propiedades del objeto final. Por ejemplo, cuando hemos aplicado `shift` al cuadrado de antes, `Manim` ha generado una copia del cuadrado en la posición final, ha interpolado las propiedades que cambian (en este caso la posición) y ha ido generando copias del cuadro en cada fotograma con las nuevas propiedades dando la ilusión de movimiento.
+Un altre mètode molt interessant dels `Mobjects` és `become`. Quan `Manim` calcula una animació, el que sol fer és una interpolació entre les propietats de l'objecte inicial i les propietats de l'objecte final. Per exemple, quan hem aplicat `shift` al quadrat d'abans, `Manim` ha generat una còpia del quadrat a la posició final, ha interpolat les propietats que canvien (en aquest cas, la posició) i ha anat generant còpies del quadrat a cada fotograma amb les noves propietats, donant la il·lusió de moviment.
 
-Este proceso lo podemos aplicar no solo a copias de un `Mobject` sino también a otros `Mobjects` con valores totalmente diferentes en sus propiedades mediante el método `become`.
+Aquest procés el podem aplicar no només a còpies d'un `Mobject`, sinó també a altres `Mobjects` amb valors completament diferents en les seves propietats mitjançant el mètode `become`.
 
 <MediaCode type="video" videoData={{src: "become_animation_example.mp4"}} codeData={{file: "become_animation_example.py"}}/>
 
 
-## Explorando el potencial
+## Explorant el potencial
 
-Agrego este punto para que podamos observar el potencial de `Manim` a la hora de crear animaciones. El siguiente ejemplo incluye cosas que no hemos visto aún pero es demasiado chulo como para dejarlo fuera. Está sacado del tutorial de `Manim` del canal de YouTube <a href="https://www.youtube.com/@Varniex" target="blank">Varniex</a>>.
+Afegeixo aquest apartat perquè puguem observar el potencial de `Manim` a l'hora de crear animacions. L'exemple següent inclou coses que encara no hem vist, però és massa espectacular per deixar-lo fora. Està extret del tutorial de `Manim` del canal de YouTube <a href="https://www.youtube.com/@Varniex" target="blank">Varniex</a>.
 
 <MediaCode type="video" videoData={{src: "rose_pattern_example.mp4"}} codeData={{file: "rose_pattern_example.py"}}/>
 
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Escoge un `Mobject` cualquiera (incluso de ejemplos anteriores) y haz una animación en la que se cambien su color y su posición a la vez. No secuencialmente.
+Tria qualsevol `Mobject` (fins i tot d'exemples anteriors) i fes una animació en què se'n canviïn el color i la posició alhora. No seqüencialment.
 
-<Aside type='tip'>Puedes encadenar cambios de propiedades uno tras otro. ¡Prueba!</Aside>
+<Aside type='tip'>Pots encadenar canvis de propietats un darrere l'altre. Prova-ho!</Aside>
 
-<AccordionItem title="Solución al ejercicio 1">
+<AccordionItem title="Solució de l'exercici 1">
   <MediaCode type="video" videoData={{src: "animation_ex_1.mp4"}} codeData={{file: "animations_ex_1.py"}}/>
 </AccordionItem>
 
-### Ejercicio 2
+### Exercici 2
 
-Crea una colección de `Mobjects` como por ejemplo `Dot`, ordénalos en horizontal y haz que suban secuencialmente y que luego bajen todos a la vez. Puntos extra si agregas una pausa.
+Crea una col·lecció de `Mobjects`, com ara `Dot`, ordena'ls horitzontalment i fes que pugin seqüencialment i que després baixin tots alhora. Punts extra si hi afegeixes una pausa.
 
-<Aside type='tip'>Usa `play` dentro de un bucle `for`</Aside>
+<Aside type='tip'>Utilitza `play` dins d'un bucle `for`.</Aside>
 
-<AccordionItem title="Solución al ejercicio 2">
+<AccordionItem title="Solució de l'exercici 2">
   <MediaCode type="video" videoData={{src: "animation_exercise_2.mp4"}} codeData={{file: "animations_ex_2.py"}}/>
 </AccordionItem>
-

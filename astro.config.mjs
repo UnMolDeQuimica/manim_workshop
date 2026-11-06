@@ -18,7 +18,6 @@ export default defineConfig({
 			title: {
 				es: "Manim - PyCon26",
 				ca: "Manim - PyCon26",
-				en: "Manim - PyCon26",
 			},
 			logo: {
 				light: './src/assets/light_logo.svg',
@@ -33,10 +32,6 @@ export default defineConfig({
 				ca: {
 					label: 'Català',
 					lang: 'ca'
-				},
-				en: {
-					label: 'English',
-					lang: 'en'
 				},
 			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/UnMolDeQuimica/manim_workshop' }],

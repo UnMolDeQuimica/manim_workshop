@@ -1,6 +1,6 @@
 ---
-title: Imágenes y SVGs
-description: Renderizando imágenes y SVGs
+title: Imatges i SVG
+description: Renderització d'imatges i SVG
 sidebar:
   order: 5
 ---
@@ -13,52 +13,51 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-Hay dos formas principales de renderizar imágenes en `Manim`:
+Hi ha dues maneres principals de renderitzar imatges a `Manim`:
 
-- `ImageMobject`: Renderiza imágenes en los formatos habituales (jpg, jpeg y png).
-- `SVGMobject`: Un SVG es un Scalable Vector Graphics, es decir, utiliza el mismo lenguaje vectorial de puntos y curvas que los `VMobjects` y, por tanto, puede tratarse como tal.
+- `ImageMobject`: Renderitza imatges en els formats habituals (jpg, jpeg i png).
+- `SVGMobject`: Un SVG és un *Scalable Vector Graphics*, és a dir, utilitza el mateix llenguatge vectorial de punts i corbes que els `VMobjects` i, per tant, es pot tractar com a tal.
 
 
 ## ImageMobjects
 
-Una imagen como un jpg o un png puede describirse (simplificando mucho) como una cuadrícula de píxeles, que a su vez puede trasladarse al código como una matriz compuesta por arrays de 3 o 4 dimensiones: rojo, verde, azul y alfa para la opacidad.
+Una imatge com un jpg o un png es pot descriure (simplificant molt) com una quadrícula de píxels, que al seu torn es pot traduir al codi com una matriu composta per arrays de 3 o 4 dimensions: vermell, verd, blau i alfa per a l'opacitat.
 
-Por ello, `Manim` puede leer imagenes desde el disco y renderizarlas con apenas unas pocas líneas de código. Para ello le indicamos una ruta y `Manim` usa `Pillow` para cargar la imagen:
+Per això, `Manim` pot llegir imatges del disc i renderitzar-les amb només unes poques línies de codi. Per fer-ho, li indiquem una ruta i `Manim` utilitza `Pillow` per carregar la imatge:
 
 <MediaCode type="image" imageData={{src: "/images/image_example.png"}} codeData={{file: "image_example.py"}}/>
 
-Ah, pero como al final las imágenes son matrices de píxeles, podemos usar numpy para definir una imagen. Nosotros le definimos colores en filas y columnas e interpola donde sea necesario:
+Ara bé, com que al cap i a la fi les imatges són matrius de píxels, podem utilitzar numpy per definir una imatge. Nosaltres li definim els colors en files i columnes i interpola allà on sigui necessari:
 
 <MediaCode type="image" imageData={{src: "/images/image_from_array_example.png"}} codeData={{file: "image_from_array_example.py"}}/>
 
 
 ## SVGMobjects
 
-De forma similar, podemos usar archivos SVG en `Manim` mediante la clase `SVGMobject`. Internamente, `Manim` los trata como si fueran un `VMobject`, a diferencia de `ImageMobject` que es tratado como un `Mobject`.
+De manera similar, podem utilitzar fitxers SVG a `Manim` mitjançant la classe `SVGMobject`. Internament, `Manim` els tracta com si fossin un `VMobject`, a diferència de `ImageMobject`, que es tracta com un `Mobject`.
 
 
 <MediaCode type="image" imageData={{src: "/images/svg_example.png"}} codeData={{file: "svg_example.py"}}/>
 
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Crea una función para que puedas renderizar una imagen a partir de una url. 
+Crea una funció perquè puguis renderitzar una imatge a partir d'una URL.
 
-<Aside type='caution'>¡Eh! ¡Este es difícil! Te recomiendo que uses `urllib.requests`, `io.BytesIO` y pruebes a ver qué consigues sacar.</Aside>
+<Aside type='caution'>Ep! Aquest és difícil! Et recomano que utilitzis `urllib.requests`, `io.BytesIO` i provis de veure què en pots treure.</Aside>
 
-<AccordionItem title="Solución al ejercicio 1">
+<AccordionItem title="Solució de l'exercici 1">
   <MediaCode type="image" imageData={{src: "/images/image_ex.png"}} codeData={{file: "image_ex.py"}}/>
 </AccordionItem>
 
-### Ejercicio 2
+### Exercici 2
 
-Crea una función para que puedas renderizar un SVG una a partir de una url.
+Crea una funció perquè puguis renderitzar un SVG a partir d'una URL.
 
-<Aside type='caution'>Aunque parezca similar al anterior, en este caso tienes que descargar el SVG primero y luego lo podrás renderizar.</Aside>
+<Aside type='caution'>Tot i que sembli similar a l'anterior, en aquest cas primer has de descarregar l'SVG i després ja el podràs renderitzar.</Aside>
 
-<AccordionItem title="Solución al ejercicio 2">
+<AccordionItem title="Solució de l'exercici 2">
   <MediaCode type="image" imageData={{src: "/images/svg_ex.png"}} codeData={{file: "svg_ex.py"}}/>
 </AccordionItem>
-

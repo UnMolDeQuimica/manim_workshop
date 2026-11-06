@@ -1,6 +1,6 @@
 ---
-title: Gráficas
-description: Graficando funciones y datos
+title: Gràfiques
+description: Representació gràfica de funcions i dades
 sidebar:
   order: 6
 ---
@@ -14,41 +14,41 @@ import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
 
-Una de las partes más potentes de `Manim` es poder representar y animar gráficas. Aquí veremos apenas unos pocos ejemplos.
+Una de les parts més potents de `Manim` és la possibilitat de representar i animar gràfiques. Aquí veurem només uns quants exemples.
 
 ## Axes
 
-La clase `Axes` es la forma más sencilla de gráfico que hay en `Manim`. Nos permite dibujar funciones sencillas sin mucha complicación. Para ello definimos un rango en los ejex x e y y le agregamos la función que queremos graficar usando `plot`.
+La classe `Axes` és la forma més senzilla de gràfic que hi ha a `Manim`. Ens permet dibuixar funcions senzilles sense gaire complicació. Per fer-ho, definim un rang en els eixos x i y i hi afegim la funció que volem representar gràficament utilitzant `plot`.
 
 <MediaCode type="image" imageData={{src: "/images/axes_example.png"}} codeData={{file: "axes_example.py"}}/>
 
-Le hemos pasado a la clase `Axes` una configuración para los ejes tanto globalmente como específicamente para el eje y. La configuración que podemos aplicar es la que corresponde a la clase <a href="https://docs.manim.community/en/stable/reference/manim.mobject.graphing.number_line.NumberLine.html#manim.mobject.graphing.number_line.NumberLine" target="blank">`NumberLine`</a>
+Hem passat a la classe `Axes` una configuració per als eixos, tant globalment com específicament per a l'eix y. La configuració que hi podem aplicar és la que correspon a la classe <a href="https://docs.manim.community/en/stable/reference/manim.mobject.graphing.number_line.NumberLine.html#manim.mobject.graphing.number_line.NumberLine" target="blank">`NumberLine`</a>
 
 ## NumberPlane
 
-Hay otras clases como `NumberPlane` que heredan de `Axes` con funcionalides extra. En este caso concreto, renderiza un plano sobre el que luego podremos agregar funciones.
+Hi ha altres classes, com ara `NumberPlane`, que hereten de `Axes` i incorporen funcionalitats addicionals. En aquest cas concret, representa un pla sobre el qual després podrem afegir funcions.
 
 <MediaCode type="image" imageData={{src: "/images/number_plane_example.png"}} codeData={{file: "number_plane_example.py"}}/>
 
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Genera una imagen de una función sencilla como una función polinómica o una trigonométrica en un `NumberPlane`.
+Genera una imatge d'una funció senzilla, com ara una funció polinòmica o una trigonomètrica, en un `NumberPlane`.
 
-<Aside type='danger'>No incluyas etiquetas en los ejes o, por lo menos, haz que se generen con Typst. De lo contrario te pedirá usar Tex y no lo hemos instalado para este taller.</Aside>
+<Aside type='danger'>No incloguis etiquetes als eixos o, com a mínim, fes que es generin amb Typst. En cas contrari, et demanarà utilitzar TeX, que no hem instal·lat per a aquest taller.</Aside>
 
-<AccordionItem title="Solución al ejercicio 1">
+<AccordionItem title="Solució de l'exercici 1">
   <MediaCode type="image" imageData={{src: "/images/graphing_ex_1.png"}} codeData={{file: "graphing_ex_1.py"}}/>
 </AccordionItem>
 
-### Ejercicio 2
+### Exercici 2
 
-Genera una imagen de un cardiode utilizando esta vez la clase `PolarPlane`.
+Genera una imatge d'un cardioide utilitzant, aquesta vegada, la classe `PolarPlane`.
 
-<Aside type='tip'>Por si no sabes la función en coordenadas polares para un cardioide, es una función que depende del ángulo theta de la siguiente manera: `f(θ) = a · (1 - sin(θ))`. ¡Prueba a jugar con el parámetro `a` a ver que sale!</Aside>
+<Aside type='tip'>Per si no saps quina és la funció en coordenades polars d'un cardioide, és una funció que depèn de l'angle theta de la manera següent: `f(θ) = a · (1 - sin(θ))`. Prova de jugar amb el paràmetre `a` a veure què surt!</Aside>
 
-<AccordionItem title="Solución al ejercicio 2">
+<AccordionItem title="Solució de l'exercici 2">
   <MediaCode type="image" imageData={{src: "/images/graphing_ex_2.png"}} codeData={{file: "graphing_ex_2.py"}}/>
 </AccordionItem>

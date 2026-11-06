@@ -1,6 +1,6 @@
 ---
-title: Figuras geométricas
-description: Figuras geométricas disponibles
+title: Figures geomètriques
+description: Figures geomètriques disponibles
 sidebar:
   order: 2
 ---
@@ -16,26 +16,26 @@ import AccordionItem from '@components/AccordionItem.astro'
 
 
 
-`Manim` trae una gran colección de figuras geométricas por defecto. Los podemos agrupar en 4 grandes categorías:
+`Manim` porta per defecte una gran col·lecció de figures geomètriques. Les podem agrupar en 4 grans categories:
 
-- Líneas
-- Curvas
-- Polígonos
-- Flechas
+- Línies
+- Corbes
+- Polígons
+- Fletxes
 
 
-<Aside>La <a href="https://docs.manim.community/en/stable/reference/manim.mobject.geometry.html" target="npmblank">documentación original</a> siempre será tu mejor aliada.</Aside>
+<Aside>La <a href="https://docs.manim.community/en/stable/reference/manim.mobject.geometry.html" target="npmblank">documentació original</a> sempre serà la teva millor aliada.</Aside>
 
-## Líneas
+## Línies
 
-Tan simple como suena: Líneas de las cuales definimos un principio y un fin. Podemos agregarles un valor en el parámetro `path_arc` para que se curven:
+Tan senzill com sona: línies de les quals definim un principi i un final. Podem afegir-hi un valor al paràmetre `path_arc` perquè es corbin:
 
 <Image src="/images/line_example.png"/>
 <PyCode file='lines.py' />
 
-## Curvas
+## Corbes
 
-Todos aquellos objetos que se componen con curvas, desde un arco hasta un círculo:
+Tots aquells objectes que estan formats per corbes, des d'un arc fins a un cercle:
 
 <MediaCode type="image" imageData={{src: "/images/arc_example.png"}} codeData={{file: "arc_example.py"}}/>
 
@@ -43,60 +43,60 @@ Todos aquellos objetos que se componen con curvas, desde un arco hasta un círcu
 
 <MediaCode type="video" videoData={{src: "ArcBetweenPointsExample.mp4"}} codeData={{file: "arc_between_points_example.py"}}/>
 
-## Polígonos
+## Polígons
 
-Hemos visto anteriormente como `Manim` nos permite construir polígonos como cuadrados o triángulos. Podemos crear polígonos irregulares pasándole los puntos que lo componen:
+Anteriorment hem vist com `Manim` ens permet construir polígons com quadrats o triangles. Podem crear polígons irregulars passant-li els punts que el componen:
 
 <MediaCode type="image" imageData={{src: "/images/poligon_example.png"}} codeData={{file: "poligon_example.py"}}/>
 
-También nos permite construir polígonos regulares tan solo especificando el número de lados necesarios.
+També ens permet construir polígons regulars simplement especificant el nombre de costats necessaris.
 
 <MediaCode type="image" imageData={{src: "/images/regular_polygon_example.png"}} codeData={{file: "regular_polygon_example.py"}}/>
 
-Con `Manim` también podemos crear poligramas: Figuras geométricas con forma de estrella como pentagramas:
+Amb `Manim` també podem crear polígons estrellats: figures geomètriques amb forma d'estrella, com ara els pentagrames:
 
 <MediaCode type="image" imageData={{src: "/images/polygram_example.png"}} codeData={{file: "polygram_example.py"}}/>
 
 
-## Flechas
+## Fletxes
 
-Dentro de `Manim` existe un tipo de `Mobject` llamado `TypableMobject`. Se trata de objetos a los que les podemos poner *puntas* o `tips`. Un ejemplo de esto son las líneas o `Line` que hemos visto antes. Ade
+Dins de `Manim` existeix un tipus de `Mobject` anomenat `TypableMobject`. Es tracta d'objectes als quals podem posar *puntes* o `tips`. Un exemple d'això són les línies o `Line` que hem vist abans. 
 
-Gracias a esto, `Manim` puede generar flechas con puntas de varios tipos que incluso podemos personalizar.
+Gràcies a això, `Manim` pot generar fletxes amb puntes de diversos tipus que fins i tot podem personalitzar.
 
 <MediaCode type="image" imageData={{src: "/images/arrow_example.png"}} codeData={{file: "arrow_example.py"}}/>
 
 
-## ¡Ejercicios!
+## Exercicis!
 
-¡Muy bien! Ahora ya sabemos cómo poner algunos objetos en pantalla y cómo modificarlos así que propongo 3 ejercicios:
+Molt bé! Ara ja sabem com posar alguns objectes a la pantalla i com modificar-los, així que proposo 3 exercicis:
 
 <Aside type='caution'>
-  ¡Recuerda! Para renderizar una imagen desde el cli debes usar el comando 
+  Recorda! Per renderitzar una imatge des del CLI has d'utilitzar la comanda 
   ```
-  uv run manim <nombre-de-tu-archivo> -ps
+  uv run manim <nom-del-teu-fitxer> -ps
   ```
 </Aside>
 
 
-### Ejercicio 1
-Genera una imagen con un objeto en cada esquina. 
-<Aside type='tip'>Ve al apartado sobre `Mobjects` para recordar los métodos que nos permiten mover objetos a las esquinas (o visita la documentación).</Aside>
-  <AccordionItem title="Solución al ejercicio 1">
+### Exercici 1
+Genera una imatge amb un objecte a cada cantonada. 
+<Aside type='tip'>Ves a l'apartat sobre `Mobjects` per recordar els mètodes que ens permeten moure objectes a les cantonades (o consulta la documentació).</Aside>
+  <AccordionItem title="Solució de l'exercici 1">
     <MediaCode type="image" imageData={{src: "/images/geometry_ex_1.png"}} codeData={{file: "geometry_ex_1.py"}}/>
   </AccordionItem>
 
-### Ejercicio 2
-Genera una imagen como la del ejercicio 1 pero esta vez cambia algunas de sus propiedades: Color, grosor, opacidad, etc.
-<Aside type='tip'>No me cansaré de decirlo: La documentación es tu mejor aliada.</Aside>
-  <AccordionItem title="Solución al ejercicio 2">
+### Exercici 2
+Genera una imatge com la de l'exercici 1, però aquesta vegada canvia algunes de les seves propietats: color, gruix, opacitat, etc.
+<Aside type='tip'>No em cansaré de dir-ho: la documentació és la teva millor aliada.</Aside>
+  <AccordionItem title="Solució de l'exercici 2">
     <MediaCode type="image" imageData={{src: "/images/geometry_ex_2.png"}} codeData={{file: "geometry_ex_2.py"}}/>
   </AccordionItem>
 
-### Ejercicio 3
-Genera una imagen con una cantidad indefinida de objetos dispersos de forma aleatoria por la escena. Puedes poner 10, 20 o los que quieras, pero mínimo 5. Puntos extra si los objetos son variados y no siempre el mismo. 
+### Exercici 3
+Genera una imatge amb una quantitat indefinida d'objectes dispersos aleatòriament per l'escena. Pots posar-ne 10, 20 o els que vulguis, però com a mínim 5. Punts extra si els objectes són variats i no sempre el mateix.
 
-<Aside type='tip'>Usa una lista de `Mobjects` y la función `cycle` de la librería standard `itertools` para crear un generador que devuelva tantas iteraciones de la lista como quieras. Luego, usa `copy` para generar varias copias del mismo objeto `Mobject`.</Aside>
-  <AccordionItem title="Solución al ejercicio 3">
+<Aside type='tip'>Utilitza una llista de `Mobjects` i la funció `cycle` de la biblioteca estàndard `itertools` per crear un generador que retorni tantes iteracions de la llista com vulguis. Després, utilitza `copy` per generar diverses còpies del mateix objecte `Mobject`.</Aside>
+  <AccordionItem title="Solució de l'exercici 3">
     <MediaCode type="image" imageData={{src: "/images/geometry_ex_3.png"}} codeData={{file: "geometry_ex_3.py"}}/>
   </AccordionItem>

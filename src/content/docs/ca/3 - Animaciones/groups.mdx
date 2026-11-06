@@ -1,5 +1,5 @@
 ---
-title: Grupos de animaciones
+title: Grups d'animacions
 description: AnimationGroup, Succession, etc.
 sidebar:
   order: 3
@@ -13,29 +13,30 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-Hasta ahora hemos visto animaciones que ocurren o bien en paralelo o bien secuencialmente. ¿Qué ocurre si quiero lanzar animaciones de forma que una empiece antes de que termine la otra? ¿O si quiero que empiecen a la vez pero duren diferente? Para ello tenemos las clases `AnimationGroup`, `LaggedStart`, `LaggedStartMap` y `Succession`.
+Fins ara hem vist animacions que tenen lloc o bé en paral·lel o bé seqüencialment. Què passa si vull iniciar animacions de manera que una comenci abans que l'altra acabi? O si vull que comencin alhora però tinguin una durada diferent? Per fer-ho, tenim les classes `AnimationGroup`, `LaggedStart`, `LaggedStartMap` i `Succession`.
 
 ## AnimationGroup
 
-Como su propio nombre nos indica, agrupa animaciones dentro de sí. Esto nos puede resultar útil si queremos tener animaciones que empiecen a la vez pero que tengan una duración distinta.
+Com el seu nom indica, agrupa animacions dins seu. Això ens pot ser útil si volem tenir animacions que comencin alhora però que tinguin una durada diferent.
 
 <MediaCode type="video" videoData={{src: "animation_group_example.mp4"}} codeData={{file: "animation_group_example.py"}}/>
 
 ## LaggedStart
 
-Con `LaggedStart` podemos lanzar varias animaciones secuencialmente pero separadas una cantidad de tiempo específica. 
+Amb `LaggedStart` podem iniciar diverses animacions seqüencialment, però separades per una quantitat de temps específica.
+
 <MediaCode type="video" videoData={{src: "lagged_start_example.mp4"}} codeData={{file: "lagged_start_example.py"}}/>
 
 
 ## LaggedStartMap
 
-Es similar a `LaggedStart` con la diferencia de que aquí aplicamos la misma animación a todos los objetos
+És similar a `LaggedStart`, amb la diferència que aquí apliquem la mateixa animació a tots els objectes.
+
 <MediaCode type="video" videoData={{src: "lagged_start_map_example.mp4"}} codeData={{file: "lagged_start_map_example.py"}}/>
 
 
 ## Succession
 
-Lanza las animaciones una tras otra. Nos ayuda a no tener que escribir muchas veces `self.play`.
+Inicia les animacions una rere l'altra. Ens ajuda a no haver d'escriure `self.play` moltes vegades.
+
 <MediaCode type="video" videoData={{src: "succession_example.mp4"}} codeData={{file: "succession_example.py"}}/>
-
-

@@ -1,5 +1,5 @@
 ---
-title: Texto
+title: Text
 description: Text, Tex, MathText, etc.
 sidebar:
   order: 4
@@ -13,23 +13,23 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-Con `Manim` tenemos 5 formas principales de agregar texto a nuestra escena:
+Amb `Manim` tenim 5 maneres principals d'afegir text a la nostra escena:
 
-- `Text`: Usado para texto normal.
-- `Tex`: Enfocado a escribir fórmulas con `Tex`.
-- `Typst`: Similar a `Tex` pero usando el motor `Typst`.
-- `MarkupText`: Usado para dar estilo al texto como si fuera Markup.
-- `Code`: Permite agregar bloques de código con resaltado de síntaxis incluido.
+- `Text`: S'utilitza per a text normal.
+- `Tex`: Enfocat a escriure fórmules amb `Tex`.
+- `Typst`: Similar a `Tex`, però utilitzant el motor `Typst`.
+- `MarkupText`: S'utilitza per donar estil al text com si fos Markup.
+- `Code`: Permet afegir blocs de codi amb ressaltat de sintaxi inclòs.
 
-En este taller no utilizaremos `Tex` porque requiere instalar una distribución de `Tex` y no nos da tiempo. Haremos llorar a Donald Knuth pero es lo que hay.
+En aquest taller no utilitzarem `Tex` perquè requereix instal·lar una distribució de `Tex` i no tenim temps. Farem plorar Donald Knuth, però és el que hi ha.
 
-<Aside>Hay toda una página de la documentación dedicada al texto. <a href="https://docs.manim.community/en/latest/guides/using_text.html" target="blank">¡Échale un ojo!</a></Aside>
+<Aside>Hi ha tota una pàgina de la documentació dedicada al text. <a href="https://docs.manim.community/en/latest/guides/using_text.html" target="blank">Dona-hi un cop d'ull!</a></Aside>
 
 ## Text
 
-La forma más sencilla de dibujar texto en `Manim` es con la clase `Text`. A esta podemos pasarle una cadena de texto y varios parámetros como el tipo, tamaño y grosor de la fuente, color, y mucho más.
+La manera més senzilla de dibuixar text a `Manim` és amb la classe `Text`. Hi podem passar una cadena de text i diversos paràmetres com ara el tipus, la mida i el gruix de la font, el color i molt més.
 
-La clase `Text` utiliza `Manim Pango`, una adaptación en C de la librería `Pango` para renderizar texto.
+La classe `Text` utilitza `Manim Pango`, una adaptació en C de la biblioteca `Pango` per renderitzar text.
 
 
 <MediaCode type="image" imageData={{src: "/images/text_example.png"}} codeData={{file: "text_example.py"}}/>
@@ -37,56 +37,56 @@ La clase `Text` utiliza `Manim Pango`, una adaptación en C de la librería `Pan
 
 ## Typst
 
-Como hemos comentado antes, vamos a ignorar la clase `Tex` y usaremos una muy similar: `Typst`. Tanto `Tex` como `Typst` son compositores tipográficos hechos para escribir textos académicos con un gran enfoque hacia las matemáticas.
+Com hem comentat abans, ignorarem la classe `Tex` i n'utilitzarem una de molt similar: `Typst`. Tant `Tex` com `Typst` són compositors tipogràfics pensats per escriure textos acadèmics, amb un gran enfocament en les matemàtiques.
 
-Con la clase `Typst` podemos escribir texto usando formato <a href="https://typst.app/docs/" target="blank">`Typst`</a>:
+Amb la classe `Typst` podem escriure text utilitzant el format <a href="https://typst.app/docs/" target="blank">`Typst`</a>:
 
 <MediaCode type="image" imageData={{src: "/images/hello_typst.png"}} codeData={{file: "hello_typst.py"}}/>
 
 
-Para escribir fórmulas podemos entrar en el modo matemático de Typst usando su sintaxis o directamente usando la clase `MathTypst`:
+Per escriure fórmules podem entrar en el mode matemàtic de Typst utilitzant-ne la sintaxi o directament la classe `MathTypst`:
 
 <MediaCode type="image" imageData={{src: "/images/math_typst_example.png"}} codeData={{file: "math_typst_example.py"}}/>
 
 
 ## MarkupText
 
-Seguidamente, una de las clases de texto más útiles de `Manim` es `MarkupText`. Con ella podemos estilar texto como si fuera un documento de Markup, muy similar a etiquetas de HTML.
+A continuació, una de les classes de text més útils de `Manim` és `MarkupText`. Amb ella podem donar estil al text com si fos un document de Markup, de manera molt similar a les etiquetes d'HTML.
 
 <MediaCode type="image" imageData={{src: "/images/markup_example.png"}} codeData={{file: "markup_example.py"}}/>
 
 ## Code
 
-Con `Code` podemos renderizar código. El resaltado de sintaxis utiliza `Pygments`, con el que podemos usar los estilos o temas por defecto o podemos crear los nuestros propios.
+Amb `Code` podem renderitzar codi. El ressaltat de sintaxi utilitza `Pygments`, amb el qual podem utilitzar els estils o temes per defecte, o bé crear-ne de propis.
 
 <MediaCode type="image" imageData={{src: "/images/code_example.png"}} codeData={{file: "code_example.py"}}/>
 
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Renderiza un fragmento del famoso *Lorem Ipsum*. 
+Renderitza un fragment del famós *Lorem Ipsum*.
 
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-  <AccordionItem title="Solución al ejercicio 1">
+  <AccordionItem title="Solució de l'exercici 1">
     <MediaCode type="image" imageData={{src: "/images/text_ex_1.png"}} codeData={{file: "text_ex_1.py"}}/>
   </AccordionItem>
 
 
-### Ejercicio 2
+### Exercici 2
 
-Usa Typst para renderizar una fórmula. ¡La que más ilusión te haga!
+Utilitza Typst per renderitzar una fórmula. La que et faci més il·lusió!
 
-  <AccordionItem title="Solución al ejercicio 2">
+  <AccordionItem title="Solució de l'exercici 2">
     <MediaCode type="image" imageData={{src: "/images/text_ex_2.png"}} codeData={{file: "text_ex_2.py"}}/>
   </AccordionItem>
 
-### Ejercicio 3
+### Exercici 3
 
-Antes hemos usado `Code` para renderizar código desde un string. Ahora intenta hacerlo desde uno de los archivos que tienes por ahí guardados de ejemplos anteriores.
+Abans hem utilitzat `Code` per renderitzar codi a partir d'un string. Ara intenta fer-ho a partir d'un dels fitxers que tens desats per aquí dels exemples anteriors.
 
-  <AccordionItem title="Solución al ejercicio 3">
+  <AccordionItem title="Solució de l'exercici 3">
     <MediaCode type="image" imageData={{src: "/images/text_ex_3.png"}} codeData={{file: "text_ex_3.py"}}/>
   </AccordionItem>

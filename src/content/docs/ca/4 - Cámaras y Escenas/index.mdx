@@ -1,6 +1,6 @@
 ---
-title: Escenas, configuración, cámaras, renderizadores y 3D
-description: Vistazo general a los bloques básicos de Manim
+title: Escenes, configuració, càmeres, renderitzadors i 3D
+description: Visió general dels blocs bàsics de Manim
 sidebar:
   order: 1
 ---
@@ -9,59 +9,58 @@ import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components
 import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
-import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 
-Nos acercamos a la recta final. Durante todo el taller hemos estado usando la clase `Scene` para renderizar nuestras escenas pero no hemos acabado de entender qué es.
+Ens apropem a la recta final. Durant tot el taller hem estat utilitzant la classe `Scene` per renderitzar les nostres escenes, però encara no hem acabat d'entendre què és exactament.
 
-## Configurando una escena
+## Configurant una escena
 
-En las escenas dibujamos los `Mobjects` que queremos ver y definimos las animaciones que queremos aplicarles. Al usar funciones como `add` o `play` le estamos diciendo a la escena que tome un `Mobject` y se lo pase a una `Camera` para que esta capture al `Mobject` y lo renderice.
+A les escenes dibuixem els `Mobjects` que volem veure i definim les animacions que volem aplicar-hi. Quan utilitzem funcions com `add` o `play`, estem indicant a l'escena que agafi un `Mobject` i el passi a una `Camera` perquè aquesta el capturi i el renderitzi.
 
-La forma en la que la escena hace esto se puede cambiar y es configurable. 
+La manera com l'escena fa això es pot modificar i és configurable.
 
-Respecto a la configuración, podemos usar `config`, una instancia de `ManimConfig` que se crea cada vez que llamamos a `Manim`. Con `config` podemos cambiar propiedades de las escena como el color del fondo, el tamaño de la escena tanto en píxeles como en unidades de `Manim`, el framerate, el nombre del archivo que vamos a generar y mil cosas más.
+Pel que fa a la configuració, podem utilitzar `config`, una instància de `ManimConfig` que es crea cada vegada que executem `Manim`. Amb `config` podem modificar propietats de l'escena com ara el color del fons, la mida de l'escena tant en píxels com en unitats de `Manim`, la taxa de fotogrames, el nom del fitxer que generarem i mil coses més.
 
-Por ejemplo, podemos modificar la configuración para hacer vídeos verticales:
+Per exemple, podem modificar la configuració per crear vídeos verticals:
 
 
 <MediaCode type="video" videoData={{src: "scene_config_editing.mp4"}} codeData={{file: "scene_config_editing.py"}}/>
 
-## Otros tipos de escenas y cámaras
+## Altres tipus d'escenes i càmeres
 
-Aparte de la configuración, podemos modificar cómo la escena interactúa con la cámara. Una `Scene` tiene una cámara estática, pero otras como `ZoomedScene` o `MovingCameraScene` pueden hacer auténticas virguerías.
+A banda de la configuració, podem modificar la manera com l'escena interactua amb la càmera. Una `Scene` té una càmera estàtica, però altres classes com `ZoomedScene` o `MovingCameraScene` ens permeten fer autèntiques virgueries.
 
 <MediaCode type="video" videoData={{src: "moved_zoomed_scene.mp4"}} codeData={{file: "moved_zoomed_scene.py"}}/>
 <MediaCode type="video" videoData={{src: "following_graph_camera.mp4"}} codeData={{file: "following_graph_camera.py"}}/>
 
 
-## Escenas 3D
+## Escenes 3D
 
-Si hay un tipo de escena que merece su propio apartado son las escenas 3D. Hasta ahora hemos trabajado solamente en dos dimensiones, pero `Manim` puede renderizar también en 3D.
+Si hi ha un tipus d'escena que mereix un apartat propi, són les escenes 3D. Fins ara només hem treballat en dues dimensions, però `Manim` també pot renderitzar en 3D.
 
-Muchos `Mobjects` 2D son aplicables a 3D pero tenemos clases como `Sphere`, `Polyhedra`, `Cylinder` o `Surface` que están específicamente pensados para trabajar en 3 dimensiones.
+Molts `Mobjects` 2D també es poden utilitzar en 3D, però tenim classes com `Sphere`, `Polyhedra`, `Cylinder` o `Surface` que estan pensades específicament per treballar en tres dimensions.
 
-Para trabajar en 3 dimensiones, en lugar de `Scene` usamos `ThreeDScene` y en lugar de `Camera` usamos la `ThreeDCamera`
+Per treballar en tres dimensions, en lloc de `Scene` utilitzem `ThreeDScene` i, en lloc de `Camera`, utilitzem `ThreeDCamera`.
 
-Aquí vienen algunos ejemplos de lo que se puede hacer en 3 dimensiones con `Manim`.
+Aquí teniu alguns exemples del que es pot fer en tres dimensions amb `Manim`.
 
 
 <MediaCode type="video" videoData={{src: "three_d_example_cairo.mp4"}} codeData={{file: "three_d_scene_example.py"}}/>
 
 
-## Renderizadores
+## Renderitzadors
 
-Si `ManimConfig` se encarga de la configuración de la escena, las `Cameras` de capturar los `Mobjects` de la escena y las escenas de contener a los `Mobjects` y las animaciones que se les aplican, los `renderers` son las clases encargadas de convertir toda esa información en imágenes que se puedan ver.
+Si `ManimConfig` s'encarrega de la configuració de l'escena, les `Cameras` de capturar els `Mobjects` de l'escena i les escenes de contenir els `Mobjects` i les animacions que s'hi apliquen, els `renderers` són les classes encarregades de convertir tota aquesta informació en imatges que es puguin visualitzar.
 
-Por defecto, `Manim` usa `Cairo`, el cual es muy bueno para animaciones en dos dimensiones.
+Per defecte, `Manim` utilitza `Cairo`, que és molt bo per a les animacions en dues dimensions.
 
-Sin embargo, para tres dimensiones existe uno más potente: `OpenGL`. Al utilizar la GPU para renderizar es, en teoría, más rápido que `Cairo`, más limpio con el 3D y permite muchas más funcionalidades como usar shaders. Por desgracia la implementación de `OpenGL` en `Manim` no está completa desde hace años, incluyendo la documentación y la compatibilidad con todos los `Mobjets` y animaciones. 
+Tanmateix, per a les tres dimensions existeix una alternativa més potent: `OpenGL`. Com que utilitza la GPU per renderitzar, en teoria és més ràpid que `Cairo`, ofereix resultats més nets en 3D i permet moltes més funcionalitats, com ara utilitzar shaders. Malauradament, la implementació d'`OpenGL` a `Manim` fa anys que no està completa, incloent-hi la documentació i la compatibilitat amb tots els `Mobjects` i les animacions.
 
 
-Para que no parezca que lo menciono solo de pasada, aquí tenemos el mismo ejemplo 3D de antes renderizado con `OpenGL`. Para usarlo podemos pasar el flag `--renderer=opengl` o podemos modificarlo en la configuración de la escena.
+Perquè no sembli que només ho esmento de passada, aquí tenim el mateix exemple 3D d'abans renderitzat amb `OpenGL`. Per utilitzar-lo, podem passar el flag `--renderer=opengl` o modificar-lo a la configuració de l'escena.
 
 
 
 <MediaCode type="video" videoData={{src: "three_d_example_opengl.mp4"}} codeData={{file: "three_d_scene_example.py"}}/>
 
-Podemos ver que es algo diferente. A eso me refiero con la falta de compatibilidad que queda todavía.
+Podem veure que el resultat és una mica diferent. A això em refereixo quan parlo de la manca de compatibilitat que encara hi ha.

@@ -1,6 +1,6 @@
 ---
-title: Grupos
-description: Groups, VGroups, VDicts
+title: Grups
+description: Groups, VGroups i VDicts
 sidebar:
   order: 3
 ---
@@ -14,57 +14,58 @@ import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
 
-Hasta ahora hemos visto como trabajar con objetos individuales. Sin embargo, a lo largo de los ejemplos hemos visto que se pueden agrupar `Mobjects` para realizar diferentes acciones. 
+Fins ara hem vist com treballar amb objectes individuals. Tanmateix, al llarg dels exemples hem vist que es poden agrupar `Mobjects` per dur a terme diferents accions.
 
 
-## Group y VGroup
+## Group i VGroup
 
-Los `Mobjects` genéricos se pueden agrupar utilizando la clase `Group`.
+Els `Mobjects` genèrics es poden agrupar utilitzant la classe `Group`.
 
 <MediaCode type="image" imageData={{src: "/images/mobjects_example.png"}} codeData={{file: "mobjects_examples.py", mark: '32-37'}}/>
 
-Los `Group` actúan como una fusión entre un `Mobject` y un `array` o una lista, de forma que podemos seleccionar los objetos por índice, agregar más objetos al grupo, quitarlos, reemplazarlos o iterar sobre ellos, pero también podemos usarlo para agregarlos a una escena como en el ejemplo de arriba.
+Els `Group` actuen com una fusió entre un `Mobject` i un `array` o una llista, de manera que podem seleccionar els objectes per índex, afegir més objectes al grup, eliminar-los, substituir-los o iterar-hi, però també els podem utilitzar per afegir-los a una escena, com en l'exemple anterior.
 
-Por otro lado, tenemos los `VGroup`, que se utiliza específicamente cuando trabajamos con `VMobjects` y queremos conservar algunas de sus propiedades vectoriales.
+D'altra banda, tenim els `VGroup`, que s'utilitzen específicament quan treballem amb `VMobjects` i volem conservar algunes de les seves propietats vectorials.
 
-Tanto `Group` como `VGroup` nos permiten realizar acciones como alinear con los objetos `arrange`  u ordenarlos en una cuadrícula con `arrange_in_grid()`. 
+Tant `Group` com `VGroup` ens permeten dur a terme accions com ara alinear els objectes amb `arrange` o ordenar-los en una quadrícula amb `arrange_in_grid()`.
 
-Su principales utilidades son poder tratar varios objetos como uno solo y poder iterar sobre ellos. 
+Les seves principals utilitats són poder tractar diversos objectes com si fossin un de sol i poder iterar-hi.
 
-<Aside>Recuerda: Los `Group` son para `Mobjects` en general y los `VGroup` específicamente para `VMobjects`</Aside>
+<Aside>Recorda: els `Group` són per a `Mobjects` en general i els `VGroup` específicament per a `VMobjects`.</Aside>
 
 ## VDict
 
-Si `Group` y `VGroup` se comportan como un `array` de `Mobjects` y `VMobjects`, `VDict` se comporta como un diccionario para `VMobjects`, de forma que podemos ir agrupando los `VMobjects` por pares clave-valor. 
+Si `Group` i `VGroup` es comporten com un `array` de `Mobjects` i `VMobjects`, respectivament, `VDict` es comporta com un diccionari per a `VMobjects`, de manera que podem anar agrupant els `VMobjects` en parelles clau-valor.
 
-Esto es muy útil si tenemos muchos objetos y queremos poder interactuar con ellos de forma independiente sin tener que preocuparnos mucho por su índice o si queremos enumerar objetos fácilmente.
+Això és molt útil si tenim molts objectes i volem poder interactuar-hi de manera independent sense haver de preocupar-nos gaire pel seu índex, o si volem enumerar objectes fàcilment.
 
 <MediaCode type="image" imageData={{src: "/images/vdict_example.png"}} codeData={{file: "vdict_example.py"}}/>
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Crea un `VGroup` que parezca un semáforo. Basta algo aproximado. Si no recuerdas en qué orden van los colores, aquí te dejo una imagen:
+Crea un `VGroup` que sembli un semàfor. N'hi ha prou amb fer-ne una aproximació. Si no recordes en quin ordre van els colors, aquí et deixo una imatge:
 
 <Image src="/images/luces-semaforo.jpg"/>
 
-<Aside type='tip'>Los objetos que agregues primero al `VGroup` estarán debajo de los más nuevos. Es cómo si lo pintaras primero en el lienzo y luego pintaras el resto encima.</Aside>
-<Aside type='tip'>¡Consejito extra! La función `arrange` utiliza una dirección. Las direcciones son arrays de 3 floats, aunque `Manim` tiene algunos por defecto como `UP`, `DOWN`, `LEFT`, `RIGHT`, `UL`, `UR`, `DL` y `DR` para representar arriba, abajo, izquierda, derecha, diagonal superior izquierda, diagonal superior derecha, diagonal inferior izquierda y diagonal inferior derecha respectivamente.</Aside>
+<Aside type='tip'>Els objectes que afegeixis primer al `VGroup` quedaran per sota dels més nous. És com si primer els dibuixessis al llenç i després dibuixessis la resta al damunt.</Aside>
+<Aside type='tip'>Un consell extra! La funció `arrange` utilitza una direcció. Les direccions són arrays de 3 floats, tot i que `Manim` en té algunes de predefinides, com ara `UP`, `DOWN`, `LEFT`, `RIGHT`, `UL`, `UR`, `DL` i `DR`, que representen amunt, avall, esquerra, dreta, diagonal superior esquerra, diagonal superior dreta, diagonal inferior esquerra i diagonal inferior dreta, respectivament.</Aside>
 
-  <AccordionItem title="Solución al ejercicio 1">
+  <AccordionItem title="Solució de l'exercici 1">
     <MediaCode type="image" imageData={{src: "/images/groups_ex_1.png"}} codeData={{file: "groups_ex_1.py"}}/>
   </AccordionItem>
-### Ejercicio 2
 
-Crea un `VGroup` que parezca un una montañita de cartas o sobres. Algo así:
+### Exercici 2
+
+Crea un `VGroup` que sembli una petita pila de cartes o sobres. Una cosa semblant a això:
 
 <Image src="/images/folders_stack.jpeg"/>
 
-Basta con que uses rectángulos o una figura similar.
+N'hi ha prou que utilitzis rectangles o alguna figura similar.
 
-<Aside type='tip'>La función `arrange` recibe un parámetro llamado `buff` con el que puedes controlar la distancia a la que se separan los objetos. ¡Juega un poco a ver que pasa!</Aside>
+<Aside type='tip'>La funció `arrange` rep un paràmetre anomenat `buff` amb el qual pots controlar la distància que separa els objectes. Juga-hi una mica per veure què passa!</Aside>
 
-  <AccordionItem title="Solución al ejercicio 2">
+  <AccordionItem title="Solució de l'exercici 2">
     <MediaCode type="image" imageData={{src: "/images/groups_ex_2.png"}} codeData={{file: "groups_ex_2.py"}}/>
   </AccordionItem>

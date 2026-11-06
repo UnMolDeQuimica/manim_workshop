@@ -1,5 +1,5 @@
 ---
-title: Trackers y Updaters
+title: Trackers i Updaters
 description: Updaters
 sidebar:
   order: 4
@@ -13,41 +13,41 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-En ejemplos anteriores hemos visto cómo usar `updaters` para hacer animaciones.
+En exemples anteriors hem vist com utilitzar `updaters` per fer animacions.
 
 <MediaCode type="video" videoData={{src: "rose_pattern_example.mp4"}} codeData={{file: "rose_pattern_example.py"}}/>
 
 
-Ahora vamos a entender mejor cómo funcionan y cómo los podemos utilizar para hacer animaciones.
+Ara entendrem millor com funcionen i com els podem utilitzar per fer animacions.
 
 
 ## Updaters
 
-Un `updater` no es más que una función que le dice a un objeto qué valor debe tener una propiedad suya en función de la propiedad de otro objeto o parámetro.
+Un `updater` no és més que una funció que indica a un objecte quin valor ha de tenir una de les seves propietats en funció de la propietat d'un altre objecte o d'un paràmetre.
 
-En el ejemplo anterior, vemos cómo el updater depende del tiempo, de ahí que use `dt`, siendo la propiedad `k` la que modificamos. Es cierto que es un ejemplo un poco exagerado, ya que en cada unidad de tiempo estamos creando una nueva instancia de `RosePattern` pero no siempre tiene que ser así. 
+En l'exemple anterior, veiem com l'updater depèn del temps, d'aquí que utilitzi `dt`, i que la propietat que modifiquem sigui `k`. És cert que és un exemple una mica exagerat, ja que a cada unitat de temps estem creant una nova instància de `RosePattern`, però no sempre ha de ser així.
 
-Por ejemplo, podemos hacer que un texto cambie en función de las propiedades de otro objeto.
+Per exemple, podem fer que un text canviï en funció de les propietats d'un altre objecte.
 
 <MediaCode type="video" videoData={{src: "updaters_text_example.mp4"}} codeData={{file: "updaters_text_example.py"}}/>
 
-Al igual que con el ejemplo de la rosa, los `updaters` pueden depender del tiempo, de forma que podemos tener un objeto siendo modificado constantemente independientemente de qué más estemos haciendo en ese momento. El objeto seguirá el `updater` hasta que se lo quitemos con `remove_updater`.
+Igual que en l'exemple de la rosa, els `updaters` poden dependre del temps, de manera que podem tenir un objecte que es modifica constantment independentment de què més estiguem fent en aquell moment. L'objecte seguirà l'`updater` fins que l'hi eliminem amb `remove_updater`.
 
 <MediaCode type="video" videoData={{src: "constant_updater_example.mp4"}} codeData={{file: "constant_updater_example.py"}}/>
 
 
 ## Trackers
 
-Los `ValueTrackers` son objetos cuya única función es la de establecer un valor determinado para que un `updater` pueda seguirlos. Así, en lugar de modificar las propiedades de un `Mobject` que pueda estar en pantalla o que no nos interese, podemos simplemente modificar el valor del `ValueTracker`. El valor del tracker se puede cambiar de golpe o puede aniamrse como una propiedad más.
+Els `ValueTrackers` són objectes que tenen com a única funció establir un valor determinat perquè un `updater` el pugui seguir. Així, en lloc de modificar les propietats d'un `Mobject` que potser és a la pantalla o que no ens interessa modificar, podem simplement canviar el valor del `ValueTracker`. El valor del tracker es pot canviar de cop o es pot animar com qualsevol altra propietat.
 
 <MediaCode type="video" videoData={{src: "value_tracker_example.mp4"}} codeData={{file: "value_tracker_example.py"}}/>
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Haz una animación en la que un punto se mueva por la escena de forma que su posición en el eje x dependa de un `ValueTracker`. Al lado del punto, debe haber un `DecimalNumber` que indique el valor de ese `ValueTracker` constantemente.
+Fes una animació en què un punt es mogui per l'escena de manera que la seva posició a l'eix x depengui d'un `ValueTracker`. Al costat del punt, hi ha d'haver un `DecimalNumber` que indiqui constantment el valor d'aquest `ValueTracker`.
 
-<AccordionItem title="Solución al ejercicio 1">
+<AccordionItem title="Solució de l'exercici 1">
   <MediaCode type="video" videoData={{src: "tracker_ex_1.mp4"}} codeData={{file: "tracker_ex_1.py"}}/>
 </AccordionItem>

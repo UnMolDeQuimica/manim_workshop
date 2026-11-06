@@ -1,6 +1,6 @@
 ---
-title: Bloques básicos
-description: Vistazo general a los bloques básicos de Manim
+title: Blocs bàsics
+description: Visió general dels blocs bàsics de Manim
 sidebar:
   order: 4
 ---
@@ -15,47 +15,48 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 
 export const manimShCodeExample = `uv run manim first_animation.py -p`
 
-<Quote author="Antonio Machado" source="Campos de Castilla">Caminante, no hay camino, se hace camino al andar.</Quote>
+<Quote author="Antonio Machado" source="Campos de Castilla">Caminant, no hi ha camí, es fa camí en caminar.</Quote>
 
 ## Esquema general
-Después de haber creado nuestras primeras animaciones, vamos a entrar un poco más en detalle. Abajo podemos ver un diagrama resumen sobre como se conectan las principales piezas de `Manim`. 
+
+Després d'haver creat les nostres primeres animacions, entrarem una mica més en detall. A continuació podem veure un diagrama resum sobre com es connecten les peces principals de `Manim`.
 
 <Image src="/images/manim-diagram-es.svg"/>
 
+## En poques paraules
 
-## En pocas palabras
-- En el código se define una clase que hereda de la clase `Scene` y se sobreescribe el método `construct` para definir nuestra escena.
-- En nuestra escena tendremos instancias de clases llamadas `MObjects` sobre las cuales podemos aplicar `Animations`.
-- La clase `Scene` instancia un `Manager` encargado de coordinar los distintos pasos del renderizado.
-- El `Manager` llama a los diferentes `Renderers` para que, a través de las `Cameras` capturen a los `MObjects` de una escena y las transformaciones que las `Animations` aplican sobre ellos.
-- La información enviada de las `Cameras` a los `Renderers` es procesada y mandada al `SceneFileWriter` para que genere los archivos finales, ya sean imágenes o videos.
+- Al codi es defineix una classe que hereta de la classe `Scene` i se sobreescriu el mètode `construct` per definir la nostra escena.
+- A la nostra escena tindrem instàncies de classes anomenades `MObjects`, sobre les quals podem aplicar `Animations`.
+- La classe `Scene` instancia un `Manager` encarregat de coordinar els diferents passos del renderitzat.
+- El `Manager` crida els diferents `Renderers` perquè, a través de les `Cameras`, capturin els `MObjects` d'una escena i les transformacions que les `Animations` hi apliquen.
+- La informació enviada des de les `Cameras` als `Renderers` es processa i s'envia al `SceneFileWriter` perquè generi els fitxers finals, ja siguin imatges o vídeos.
 
 <Aside type="tip">
-Esto es solo un resúmen corto y sencillo para que entendamos brevemente cómo funciona `Manim` por dentro. Para más detalles <a href="https://docs.manim.community/en/stable/guides/deep_dive.html" target="_blank">ve a la documentación</a>.
+Això només és un resum breu i senzill perquè entenguem per sobre com funciona `Manim` per dins. Per a més detalls, <a href="https://docs.manim.community/en/stable/guides/deep_dive.html" target="_blank">ves a la documentació</a>.
 </Aside>
 
-A continuación nos iremos adentrando de forma más profunda en cada uno de estos componentes para ir entendiendo cómo podemos utilizarlos para generar animaciones, pero antes de eso debemos entender la anatomía de una escena de `Manim`.
+A continuació anirem aprofundint en cadascun d'aquests components per entendre com podem utilitzar-los per generar animacions, però abans d'això hem d'entendre l'anatomia d'una escena de `Manim`.
 
-## Pequeño recap
+## Petit repàs
 
-Por ahora, insistiré un poco en la estructura básica de una animación en Manim usando nuestra primera animación como ejemplo:
+De moment, insistiré una mica en l'estructura bàsica d'una animació a Manim fent servir la nostra primera animació com a exemple:
 
 <PyCode file='first_animation.py'/>
 
 <Steps>
-1. importamos todo de la librería `Manim`. No es la mejor práctica, lo sé, pero de esta forma nos podemos concentrar solo en animar y no en hacer imports o agregando texto innecesario.
+1. Importem tot de la biblioteca `Manim`. Sé que no és la millor pràctica, però d'aquesta manera ens podem concentrar només a animar, i no a fer importacions o a afegir text innecessari.
 
    <PyCode file='first_animation.py' mark='1'/>
 
-2. Creamos una clase que heredará de la clase `Scene` de `Manim`.
+2. Creem una classe que heretarà de la classe `Scene` de `Manim`.
 
    <PyCode file='first_animation.py' mark='3'/>
 
-3. Sobreescribimos el método `construct` con nuestros `Mobject` y las animaciones que les vamos a aplicar.
+3. Sobreescrivim el mètode `construct` amb els nostres `Mobject` i les animacions que hi aplicarem.
 
    <PyCode file='first_animation.py' mark='4-8'/>
 
-4. Y por último renderizamos nuestra animación desde la terminal.
+4. I, per últim, renderitzem la nostra animació des del terminal.
 
    <Code code={manimShCodeExample} lang='sh' />
 </Steps>

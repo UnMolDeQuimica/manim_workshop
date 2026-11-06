@@ -1,6 +1,6 @@
 ---
-title: Animaciones de Manim
-description: Animaciones ya existentes en Manim
+title: Animacions de Manim
+description: Animacions ja existents a Manim
 sidebar:
   order: 2
 ---
@@ -13,32 +13,32 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-## Animaciones incluidas en `Manim`
+## Animacions incloses a `Manim`
 
-`Manim` cuenta con una gran colección de animaciones ya definida para que no tengamos que estar constantemente cambiando los valores de las propiedades a mano. Todas ellas heredan de la clase `Animation` y se distinguen una de otra por la forma en la que implementan el método `interpolate_mobject`.
+`Manim` compta amb una gran col·lecció d'animacions ja definides perquè no hàgim d'estar canviant constantment els valors de les propietats a mà. Totes hereten de la classe `Animation` i es diferencien entre elles per la manera com implementen el mètode `interpolate_mobject`.
 
-Las hay cuyo uso es muy habitual en `Manim` y en otro software como `FadeIn` o `FadeOut` que cambian la opacidad y las hay muy características y llamativas como `Write` o `Transform`. Vamos a ver algunos ejemplos:
+N'hi ha algunes que s'utilitzen molt habitualment a `Manim` i en altres programes, com ara `FadeIn` o `FadeOut`, que canvien l'opacitat, i d'altres de molt característiques i cridaneres, com ara `Write` o `Transform`. Vegem-ne alguns exemples:
 
 
-### FadeIn y FadeOut
+### FadeIn i FadeOut
 
-Cambian la opacidad de un objeto:
+Canvien l'opacitat d'un objecte:
 
 <MediaCode type="video" videoData={{src: "fade_in_example.mp4"}} codeData={{file: "fade_in_example.py"}}/>
 
 
-### Write, Unwrite, Create y Uncreate
+### Write, Unwrite, Create i Uncreate
 
-En lugar de cambiar la opacidad de un `Mobject` aprovechan la naturaleza vectorial de los `VMobjects` y generan `Mobjects` intermedios con distinto número de puntos de forma que parece que se está construyendo el objeto.
+En lloc de canviar l'opacitat d'un `Mobject`, aprofiten la naturalesa vectorial dels `VMobjects` i generen `Mobjects` intermedis amb un nombre diferent de punts, de manera que sembla que l'objecte s'estigui construint.
 
 <MediaCode type="video" videoData={{src: "write_example.mp4"}} codeData={{file: "write_example.py"}}/>
 
 
-### Transform, ReplacementTransform y TransformMatchingShapes
+### Transform, ReplacementTransform i TransformMatchingShapes
 
-La familia `Transform` es otra familia de animaciones que aprovecha la naturaleza vectorial de los `VMobjects` y nos permite interpolar sus puntos de forma que nos queda una transformación chulísima. Ahora: ¿Qué diferencia hay entre `Transform` y `ReplacementTransform`?
+La família `Transform` és una altra família d'animacions que aprofita la naturalesa vectorial dels `VMobjects` i ens permet interpolar els seus punts, de manera que obtenim una transformació espectacular. Ara bé: quina diferència hi ha entre `Transform` i `ReplacementTransform`?
 
-Cuando usamos `Transform`, la variable que apunta a nuestro `Mobject` inicial ahora apunta al `Mobject` en el que se ha transformado. Es como si manim hiciera esto internamente:
+Quan utilitzem `Transform`, la variable que apunta al nostre `Mobject` inicial ara apunta al `Mobject` en què s'ha transformat. És com si Manim fes això internament:
 
 ```python
 mob_a = Square()
@@ -47,43 +47,36 @@ mob_a.become(mob_b)
 mob_a = mob_b
 ```
 
-A la hora de usar `Transform` debemos tener esto en cuenta o se nos generará una copia de `mob_b` en el renderizado. 
+A l'hora d'utilitzar `Transform`, hem de tenir-ho en compte o se'ns generarà una còpia de mob_b durant el renderitzat.
 
-Aquí un ejemplo para que quede todo más claro.
+Aquí tenim un exemple perquè quedi tot més clar.
 
 <MediaCode type="video" videoData={{src: "transform_example.mp4"}} codeData={{file: "transform_example.py"}}/>
 
-Por su parte, `TransformMatchingShapes` intenta conservar lo máximo de los `Mobjects` originales y solo modifica lo nuevo.
+Per la seva banda, `TransformMatchingShapes` intenta conservar al màxim els Mobjects originals i només modifica allò que és nou.
 
-### Rotate y Rotating
+### Rotate i Rotating
 
-Con `Rotate` y `Rotating` podemos rotar un `Mobject`. Pueden parecer muy similares por el nombre, pero hay una sutil diferencia. `Rotate` aplica una rotación sobre el `Mobject` y luego interpola el `Mobject` original hacia esa versión rotada. Rotating aplica una rotación durante un periodo de tiempo determinado que podemos definir dentro de la misma clase con `run_time`. 
+Amb `Rotate` i `Rotating` podem fer girar un Mobject. Pel nom poden semblar molt similars, però hi ha una diferència subtil. Rotate aplica una rotació sobre el Mobject i després interpola el Mobject original cap a aquesta versió girada. Rotating aplica una rotació durant un període de temps determinat que podem definir dins de la mateixa classe amb run_time.
 
 <MediaCode type="video" videoData={{src: "rotate_example.mp4"}} codeData={{file: "rotate_example.py"}}/>
 
-
-### Indicate, Circumscribe y Flash
-
-Hay animaciones que nos ayudan a resaltar una parte de la escena. Algunos ejemplos son `Indicate`, `Circumscribe` y `Flash`
+### Indicate, Circumscribe i Flash
+Hi ha animacions que ens ajuden a ressaltar una part de l'escena. Alguns exemples són `Indicate`, `Circumscribe` i `Flash`.
 
 <MediaCode type="video" videoData={{src: "indicate_example.mp4"}} codeData={{file: "indicate_examples.py"}}/>
 
-### Animaciones de texto
-
-Para acabar con este bloque, veremos algunas animaciones de texto que están graciosas.
+### Animacions de text
+Per acabar aquest bloc, veurem algunes animacions de text que són força curioses.
 
 <MediaCode type="video" videoData={{src: "text_animation_examples.mp4"}} codeData={{file: "text_animation_examples.py"}}/>
 
-<Aside>¡Eh! ¡`AddTextWordByWord` no funciona! Toda la razón. Eso dice <a href="https://docs.manim.community/en/stable/reference/manim.animation.creation.AddTextWordByWord.html" target="blank">la documentación</a>. ¿Te animas a arreglarlo y abrirles una pull request?</Aside>
+<Aside>Ep! `AddTextWordByWord` no funciona! Tens tota la raó. Així ho diu <a href="https://docs.manim.community/en/stable/reference/manim.animation.creation.AddTextWordByWord.html" target="blank">la documentació</a>. T'animes a arreglar-ho i obrir-los una pull request?</Aside>
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Escribe un texto y aplícale alguna de las animaciones que hemos visto más alguna extra que haya en la documentación y que no hayamos tocado.
+Escriu un text i aplica-hi alguna de les animacions que hem vist, més alguna altra de la documentació que encara no hàgim provat.
 
-
-
-<AccordionItem title="Solución al ejercicio 1">
-  <MediaCode type="video" videoData={{src: "anim_ex_1.mp4"}} codeData={{file: "animation_ex_1.py"}}/>
-</AccordionItem>
+<AccordionItem title="Solució de l'exercici 1"> <MediaCode type="video" videoData={{src: "anim_ex_1.mp4"}} codeData={{file: "animation_ex_1.py"}}/> </AccordionItem>

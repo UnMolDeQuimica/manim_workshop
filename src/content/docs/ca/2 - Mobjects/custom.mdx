@@ -1,6 +1,6 @@
 ---
-title: Mobjects personalizados
-description: Crear Mobjects personalizados
+title: Mobjects personalitzats
+description: Crear Mobjects personalitzats
 sidebar:
   order: 9
 ---
@@ -14,51 +14,51 @@ import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
 
-Hasta ahora hemos visto como podemos usar los objetos que vienen por defecto en `Manim` para hacer animaciones. Pero... ¿Qué pasa si quiero hacer objetos personalizados o a mi medida?
+Fins ara hem vist com podem utilitzar els objectes que venen per defecte a `Manim` per fer animacions. Però... Què passa si vull crear objectes personalitzats o a la meva mida?
 
-Aquí entra en juego la herencia en `python`. Podemos crear objetos nuevos heredando de `Mobject`, de `VMobject`, de `VGroup` o de cualquier otra clase de `Mobject` que queramos. 
+Aquí és on entra en joc l'herència en `python`. Podem crear objectes nous heretant de `Mobject`, de `VMobject`, de `VGroup` o de qualsevol altra classe de `Mobject` que vulguem.
 
-Para ello, es tan sencillo como implementar una subclase y modificar lo que queramos.
+Per fer-ho, és tan senzill com implementar una subclasse i modificar allò que vulguem.
 
-## Personalizando Mobjects existentes
+## Personalitzant Mobjects existents
 
-Supongamos que queremos utilizar la clase `Dot` pero es muy chiquita para nuestro caso. Podemos implementar una versión más grande fácilmente:
+Suposem que volem utilitzar la classe `Dot`, però és massa petita per al nostre cas. Podem implementar fàcilment una versió més gran:
 
 <MediaCode type="image" imageData={{src: "/images/custom_dot.png"}} codeData={{file: "custom_dot.py"}}/>
 
 
-## Creando Mobjects de cero
+## Creant Mobjects des de zero
 
-Modificar cosas que ya existen puede estar bien, pero la gracia de saber programar es poder crear lo que nosotros queramos. Esto lo podemos hacer heredando de las clases `Mobject` o `VMobject`. 
+Modificar coses que ja existeixen pot estar bé, però la gràcia de saber programar és poder crear allò que nosaltres vulguem. Això ho podem fer heretant de les classes `Mobject` o `VMobject`.
 
-Aquí, por ejemplo, haremos una clase que dibuje una espiral. Para ello, vamos a heredar de `VMobject` y vamos a sobreescribir el método `_generate_points`.
+Aquí, per exemple, crearem una classe que dibuixi una espiral. Per fer-ho, heretarem de `VMobject` i sobreescriurem el mètode `_generate_points`.
 
 
 <MediaCode type="image" imageData={{src: "/images/spiral_example.png"}} codeData={{file: "spiral_example.py", mark: "33-47" }}/>
 
 
-## Componiendo objetos con VGroup
+## Component objectes amb VGroup
 
-Podemos heredar de `VGroup` para generar objetos compuestos en lugar de ir definiendo todos sus puntos. Una gran ventaja de esto es que podemos aprovechar los `VMobjects` ya existentes y utilizarlos para simplificarnos el trabajo.
+Podem heretar de `VGroup` per generar objectes compostos en lloc d'anar definint tots els seus punts. Un gran avantatge d'això és que podem aprofitar els `VMobjects` ja existents i utilitzar-los per simplificar-nos la feina.
 
 <MediaCode type="image" imageData={{src: "/images/element_example.png"}} codeData={{file: "element_example.py"}}/>
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Crea una figura con un punto central del cuál brotan un número indeterminado de brazos como si fuera una galaxia espiral.
+Crea una figura amb un punt central del qual surtin un nombre indeterminat de braços, com si fos una galàxia espiral.
 
-<Aside type='tip'>Parece muy difícil pero es sencillo si imaginas que cada brazo es un conjunto de puntos que se alejan de un centro formando una espiral.</Aside>
+<Aside type='tip'>Sembla molt difícil, però és senzill si t'imagines que cada braç és un conjunt de punts que s'allunyen d'un centre formant una espiral.</Aside>
 
-<AccordionItem title="Solución al ejercicio 1">
+<AccordionItem title="Solució de l'exercici 1">
   <MediaCode type="image" imageData={{src: "/images/custom_objects_ex_1.png"}} codeData={{file: "custom_objects_ex_1.py"}}/>
 </AccordionItem>
 
-### Ejercicio 2
+### Exercici 2
 
-Crea una figura que contenga un texto encuadrado en un rectángulo. Se deben poder configurar el texto, el color del texto, el color del rectángulo y el color del borde del rectángulo.
+Crea una figura que contingui un text emmarcat en un rectangle. S'han de poder configurar el text, el color del text, el color del rectangle i el color de la vora del rectangle.
 
-<AccordionItem title="Solución al ejercicio 2">
+<AccordionItem title="Solució de l'exercici 2">
   <MediaCode type="image" imageData={{src: "/images/custom_objects_ex_2.png"}} codeData={{file: "custom_objects_ex_2.py"}}/>
 </AccordionItem>

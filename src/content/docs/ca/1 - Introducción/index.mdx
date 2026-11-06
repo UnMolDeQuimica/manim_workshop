@@ -1,6 +1,6 @@
 ---
-title: Orígenes
-description: Breve historia de Manim
+title: Orígens
+description: Breu història de Manim
 sidebar:
   order: 1
 ---
@@ -12,11 +12,11 @@ import Quote  from '@components/Quote.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+<Quote author="Douglas Adams" source="El Restaurant del Final de l'Univers">Al principi es va crear l'Univers. Això va fer enfadar molta gent, i la majoria ho va considerar un error.</Quote>
 
 ## 3B1B
 
-En 2015, Grant Sanderson se graduó como matemático en la Universidad de Stanford. 
+El 2015, Grant Sanderson es va graduar en matemàtiques a la Universitat de Stanford.
 
 <ShowcaseProfile
   entries={[
@@ -24,16 +24,16 @@ En 2015, Grant Sanderson se graduó como matemático en la Universidad de Stanfo
       name: 'Grant Sanderson',
       picture: "/images/grant_sanderson.jpg",
       href: "https://www.3blue1brown.com/",
-      description: "Matemático y creador de Manim"
+      description: "Matemàtic i creador de Manim"
     }
   ]}
 />
 
-Ese mismo año empezó a trabajar en Khan Academy y en un proyecto personal: Su canal de YouTube 3B1B (Three Blue One Brown). 
+Aquell mateix any va començar a treballar a Khan Academy i en un projecte personal: el seu canal de YouTube 3B1B (Three Blue One Brown).
 
-El contenido de 3B1B se enfoca en explicar conceptos matemáticos de forma visual e intuitiva. Para ayudarse a hacer esas representaciones visuales hizo lo que cualquiera que sabe un poco de programación hace: **Diseñar una librería entera.**
+El contingut de 3B1B se centra a explicar conceptes matemàtics d'una manera visual i intuïtiva. Per ajudar-se a crear aquestes representacions visuals, va fer el que faria qualsevol persona que sap una mica de programació: **dissenyar una biblioteca sencera.**
 
-<Card title="Algunos videos de 3B1B. ¡Todos son una maravilla!" icon="youtube">
+<Card title="Alguns vídeos de 3B1B. Tots són una meravella!" icon="youtube">
 <ShowcaseYouTube
   entries={[
     {
@@ -50,38 +50,39 @@ El contenido de 3B1B se enfoca en explicar conceptos matemáticos de forma visua
 
 
 
-## Manim, ManimGL y ManimCE
+## Manim, ManimGL i ManimCE
 
-El nombre de esa librería es Manim, que viene de *Mathematical Animation Engine*. 
+El nom d'aquesta biblioteca és Manim, que prové de *Mathematical Animation Engine*.
 
 <Image src="https://raw.githubusercontent.com/3b1b/manim/master/logo/cropped.png"/>
 
-Al tratarse de un proyecto personal, Sanderson consiguió que el código funcionara y cubriera sus necesidades. Sin embargo, no era buen código. No tenía documentación, estaba lleno de funciones redudantes e ineficientes, y se habían tomado muchas decisiones más que cuestionables.
+Com que es tractava d'un projecte personal, Sanderson va aconseguir que el codi funcionés i cobrís les seves necessitats. Tanmateix, no era un bon codi. No tenia documentació, estava ple de funcions redundants i ineficients, i s'hi havien pres moltes decisions força qüestionables.
 
-Aún así, mucha gente quedó maravillada con los videos de Sanderson y con la herramienta. Comenzaron a surgir tutoriales, se hacían preguntas en Stack Overflow y poco a poco empezó a crecer una comunidad.
+Tot i això, molta gent va quedar meravellada amb els vídeos de Sanderson i amb l'eina. Van començar a aparèixer tutorials, es feien preguntes a Stack Overflow i, a poc a poc, va començar a créixer una comunitat.
 
-De esa comunidad nació un fork conocido como [Manim Community Edition](https://www.manim.community/) o ManimCE, donde la propia comunidad de Manim comenzó a cubrir las carencias de la librería.
+D'aquesta comunitat en va néixer un fork conegut com a [Manim Community Edition](https://www.manim.community/) o ManimCE, on la mateixa comunitat de Manim va començar a corregir les mancances de la biblioteca.
 
-Por su parte, Sanderson continuó con su propio desarrollo e introdujo una serie de cambios que hicieron la versión de la comunidad incompatible. A esta versión de Sanderson se la conoce como ManimGL
+Per la seva banda, Sanderson va continuar amb el seu propi desenvolupament i va introduir una sèrie de canvis que van fer que la seva versió fos incompatible amb la de la comunitat. Aquesta versió de Sanderson es coneix com a ManimGL.
+
 <ShowcaseProfile
   entries={[
     {
       name: 'ManimGL',
       picture: "https://github.com/3b1b.png",
       href: "https://github.com/3b1b/manim",
-      description: "Versión original de Manim por Grant Sanderson"
+      description: "Versió original de Manim, creada per Grant Sanderson"
     },
     {
       name: 'ManimCE',
       picture: "https://docs.manim.community/en/stable/_static/manim-logo-sidebar.svg",
       href: "https://github.com/ManimCommunity/manim",
-      description: "Versión creada y mantenida por la comunidad"
+      description: "Versió creada i mantinguda per la comunitat"
     }
   ]}
 />
 
-## ¿Y nosotros qué?
+## I nosaltres, què?
 
-Para este taller haremos uso de la versión de la comunidad. Es mucho más estable y su [documentación](https://docs.manim.community/en/stable/index.html) es mucho más extensa y clara. Además tienen un Discord lleno de gente maja y encantadora. 
+Per a aquest taller farem servir la versió de la comunitat. És molt més estable i la seva [documentació](https://docs.manim.community/en/stable/index.html) és molt més extensa i clara. A més, tenen un Discord ple de gent molt maca i encantadora.
 
-<LinkButton href="https://manim.community/discord" icon="discord" iconPlacement="start">¡Únete al Discord de ManimCE!</LinkButton>
+<LinkButton href="https://manim.community/discord" icon="discord" iconPlacement="start">Uneix-te al Discord de ManimCE!</LinkButton>

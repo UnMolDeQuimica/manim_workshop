@@ -1,6 +1,6 @@
 ---
-title: Primera Animación
-description: Haremos nuestra primera animación
+title: Primera animació
+description: Farem la nostra primera animació
 sidebar:
   order: 3
 ---
@@ -21,68 +21,71 @@ export const manimHighlights = ['manim first_animation.py']
 export const previewHighlights = ['-p']
 
 <Quote author="Julio Cortázar" source="Rayuela">
-Andábamos sin buscarnos pero sabiendo que andábamos para encontrarnos.
+Caminàvem sense buscar-nos, però sabent que caminàvem per trobar-nos.
 </Quote>
 
-Ahora que ya tenemos `Manim` instalado y funcionando, es hora de ponerlo en marcha.
+Ara que ja tenim `Manim` instal·lat i funcionant, és hora de posar-lo en marxa.
 
-## Nuestra primera animación
-Abrimos nuestro editor de texto favorito e introducimos el siguiente código:
+## La nostra primera animació
+
+Obrim el nostre editor de text preferit i hi introduïm el codi següent:
 
 <PyCode file='first_animation.py' />
 
-Seguidamente, vamos a nuestra terminal:
+Tot seguit, anem al terminal:
 
 <Code code={manimShCodeExample} lang='sh' />
 
-Esto va a generar el siguiente video:
+Això generarà el vídeo següent:
 
 <Video src='MyFirstAnimation.mp4' />
 
-## ¿Qué ha pasado? ¿Qué hemos hecho?
-Vamos a estudiar en orden qué hemos hecho y que ha pasado.
+## Què ha passat? Què hem fet?
 
-### En el código
+Estudiarem, per ordre, què hem fet i què ha passat.
 
-A python le hemos dicho:
+### Al codi
+
+A Python li hem dit:
 
 <Steps>
-1. De la librería `Manim`, tráete todo todito lo que tengas.
+1. De la biblioteca `Manim`, porta'm absolutament tot el que tinguis.
 
    <PyCode file='first_animation.py' mark='1'/>
 
-2. Crea una clase llamada `MyFirstAnimation` que herede de `Scene`
+2. Crea una classe anomenada `MyFirstAnimation` que hereti de `Scene`.
 
    <PyCode file='first_animation.py' mark='3'/>
 
-3. Sobreescribe el método `construct` para que instancie un `Square` y le aplique la animación `Write`
+3. Sobreescriu el mètode `construct` perquè instanciï un `Square` i li apliqui l'animació `Write`.
 
    <PyCode file='first_animation.py' mark='4-8'/>
 
 </Steps>
 
-### En la terminal
-En la terminal hemos dicho:
+### Al terminal
+
+Al terminal hem dit:
+
 <Steps>
 
-1. ¡Eh, tú, `uv`, llama a `Manim`!
+1. Ei, tu, `uv`, crida `Manim`!
 
    <Code code={manimShCodeExample} lang='sh' mark={heyYouHighlights} />
 
-2. Ahora, `Manim`, renderiza lo que sea que haya en el archivo `first_animation.py`. 
+2. Ara, `Manim`, renderitza el que sigui que hi hagi al fitxer `first_animation.py`.
 
    <Code code={manimShCodeExample} lang='sh' mark={manimHighlights} />
 
-
-3. ¡Y quiero previsualizar!
+3. I vull previsualitzar-ho!
 
    <Code code={manimShCodeExample} lang='sh' mark={previewHighlights} />
 
 </Steps>
 
-### Resultado
+### Resultat
 
-El resultado es el video tan chulo que hemos visto más arriba junto con otra serie de archivos:
+El resultat és el vídeo tan xulo que hem vist més amunt, juntament amb una altra sèrie de fitxers:
 
 <FileTree>
 - manim-workshop
@@ -98,24 +101,24 @@ El resultado es el video tan chulo que hemos visto más arriba junto con otra se
           - MyFirstAnimation.mp4
 </FileTree>
 
-`Manim` ha generado una carpeta `media` dentro de la que hay otra llamada `videos`. Allí ha creado una carpeta usando el nombre de nuestro archivo python: `first_animation`. 
+`Manim` ha generat una carpeta `media`, dins de la qual n'hi ha una altra anomenada `videos`. Allà ha creat una carpeta fent servir el nom del nostre fitxer Python: `first_animation`.
 
-Dentro de esa, otra carpeta con la calidad del video, en este caso `1080p60` dentro de la cual tenemos un video con el nombre de la clase que hemos creado y otra carpeta con fragmentos de la animación.
+Dins d'aquesta, hi ha una altra carpeta amb la qualitat del vídeo, en aquest cas `1080p60`, dins de la qual tenim un vídeo amb el nom de la classe que hem creat i una altra carpeta amb fragments de l'animació.
 
-Conforme avancemos el taller iremos llenando esta carpeta con más cosas. Por lo general `Manim` genera archivos bastante comprimidos, pero os recomiendo ir haciendo limpieza de vez en cuando.
+A mesura que avancem en el taller, anirem omplint aquesta carpeta amb més coses. En general, `Manim` genera fitxers força comprimits, però us recomano anar fent neteja de tant en tant.
 
-## Editando la animación
+## Editant l'animació
 
-Vamos ahora a crear otro archivo llamado `second_animations.py`. Dentro de él vamos a hacer modificaciones a nuestra animación inicial. 
+Ara crearem un altre fitxer anomenat `second_animations.py`. Dins d'aquest hi farem modificacions a la nostra animació inicial.
 
-Primero de todo, vamos a copiar el contenido de `first_animation.py` pero modificando el nombre de la clase a `SecondAnimation`. Luego, vamos a darle un poco de color a este cuadrado tan soso.
+Primer de tot, copiarem el contingut de `first_animation.py`, però modificant el nom de la classe a `SecondAnimation`. Després, donarem una mica de color a aquest quadrat tan ensopit.
 
 <PyCode 
   file="second_animations.py"
   end={15}
 />
 
-Y, de nuevo, vamos a renderizar nuestra animación:
+I, de nou, renderitzarem la nostra animació:
 
 ```sh
 uv run manim second_animations.py -p
@@ -123,16 +126,13 @@ uv run manim second_animations.py -p
 
 <Video src='MySecondAnimation.mp4' />
 
-Vamos con otro cambio, venga, nuestra tercera animación. Agregamos esto al código para hacer una animación en la que el cuadrado gire en lugar de dibujarse.
+Fem un altre canvi, va, la nostra tercera animació. Afegim això al codi per fer una animació en què el quadrat giri en lloc de dibuixar-se.
 
-<PyCode 
-  file="second_animations.py"
-  start={15}
-/>
+<PyCode file="second_animations.py" start={15} />
 
-Si volvemos a llamar a `Manim` desde la terminal veremos algo nuevo:
+Si tornem a cridar Manim des del terminal, veurem una cosa nova:
 
-```sh typed
+```sh  typed
 $ uv run manim second_animations.py -p
 Manim Community v0.21.0
 
@@ -145,8 +145,9 @@ Choice(s):
 $ 2
 ```
 
-Aquí `Manim` ha detectado que tenemos dos clases que heredan de `Scene` en nuestro archivo `second_animations.py`, así que nos está preguntando cuál de las dos queremos renderizar. Le metemos el numerito correspondiente, en este caso el 2, y ahora sí que nos renderiza la animación nueva.
+Aquí Manim ha detectat que tenim dues classes que hereten de Scene al nostre fitxer second_animations.py, així que ens està preguntant quina de les dues volem renderitzar. Introduïm el numeret corresponent, en aquest cas el 2, i ara sí que ens renderitza la nova animació.
 
 <Video src="MyThirdAnimation.mp4" />
 
-**¡Menuda chulada!**
+Quina passada!
+

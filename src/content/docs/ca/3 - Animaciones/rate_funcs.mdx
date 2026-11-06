@@ -1,6 +1,6 @@
 ---
-title: Rate functions
-description: Resumen sobre qué es una animación en Manim
+title: Funcions de ritme (Rate functions)
+description: Resum sobre les funcions de ritme de les animacions a Manim
 sidebar:
   order: 4
 ---
@@ -13,36 +13,35 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import MediaCode  from '@components/MediaCode.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-Las animaciones que hemos hecho hasta ahora tienen un ritmo particular. Pareciera que empieza lento y poco a poco va acelerando hasta que vuelve a frenar.
+Les animacions que hem fet fins ara tenen un ritme particular. Sembla que comencen lentament i que, a poc a poc, van accelerant fins que tornen a frenar.
 
 ## Rate functions
 
-Esto es debido a las `rate_functions`: funciones que definen que tan rápido progresa una animación. La documentación de `Manim` nos ofrece unas gráficas que ayudan a aclarar cómo funcionan las `rate_functions` visualmente:
+Això és degut a les `rate_functions`: funcions que defineixen la velocitat amb què progressa una animació. La documentació de `Manim` ens ofereix unes gràfiques que ajuden a entendre visualment com funcionen les `rate_functions`:
 
 <Image src="/images/rate_func_example.png"/>
 
 
-Para que queden aún más claras, vamos a hacer animaciones que representen algunas de estas funciones.
+Perquè quedin encara més clares, farem animacions que representin algunes d'aquestes funcions.
 
 <MediaCode type="video" videoData={{src: "rate_funcs_example.mp4"}} codeData={{file: "rate_funcs_example.py"}}/>
 
 
-## ¡Ejercicios!
+## Exercicis!
 
-### Ejercicio 1
+### Exercici 1
 
-Combina lo aprendido en este apartado y en el apartado anterior de Grupos de Animaciones y juega un poco a ver qué consigues.
+Combina el que has après en aquest apartat i en l'apartat anterior, sobre els grups d'animacions, i experimenta una mica per veure què aconsegueixes.
 
-<AccordionItem title="Solución al ejercicio 1">
+<AccordionItem title="Solució de l'exercici 1">
   <MediaCode type="video" videoData={{src: "rate_funcs_ex_1.mp4"}} codeData={{file: "rate_funcs_ex_1.py"}}/>
 </AccordionItem>
 
 
-### Ejercicio 2
+### Exercici 2
 
-Las `rate_functions` son funciones que dependen de una variable temporal `t` que va de 0 a 1. Crea una `rate_function` propia y aplícala a una animación.
+Les `rate_functions` són funcions que depenen d'una variable temporal `t` que va de 0 a 1. Crea una `rate_function` pròpia i aplica-la a una animació.
 
-<AccordionItem title="Solución al ejercicio 2">
+<AccordionItem title="Solució de l'exercici 2">
   <MediaCode type="video" videoData={{src: "rate_funcs_ex_2.mp4"}} codeData={{file: "rate_funcs_ex_2.py"}}/>
 </AccordionItem>
-

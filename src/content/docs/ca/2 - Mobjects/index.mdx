@@ -1,6 +1,6 @@
 ---
-title: ¿Qué es un Mobject?
-description: Explicación de qué es un Mobject
+title: Què és un Mobject?
+description: Explicació de què és un Mobject
 sidebar:
   order: 1
 ---
@@ -14,68 +14,68 @@ import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 import Accordion from '@components/Accordion.astro'
 import AccordionItem from '@components/AccordionItem.astro'
 
-<Quote author="Mary Shelley" source="Frankenstein">El mundo era para él un secreto que deseaba descifrar.</Quote>
+<Quote author="Mary Shelley" source="Frankenstein">El món era per a ell un secret que desitjava desxifrar.</Quote>
 
-Comenzamos con una de las partes fundamentales de `Manim`: los `Mobjects`.
+Comencem amb una de les parts fonamentals de `Manim`: els `Mobjects`.
 
-## ¿Qué sapochonchos es un Mobject?
+## Què carai és un Mobject?
 
-Su nombre viene de *Mathematical Objects* o de *Manim Objects*, no queda del todo claro ni hay consenso. Se trata de clases que abstraen objetos que podemos representar en la pantalla. 
+El seu nom prové de *Mathematical Objects* o de *Manim Objects*, no queda del tot clar ni hi ha consens. Es tracta de classes que abstrauen objectes que podem representar a la pantalla.
 
-`Manim` viene con un conjunto de `Mobjects` que podemos utilizar: Desde figuras geométricas a grafos, incluyendo texto e imágenes:
+`Manim` ve amb un conjunt de `Mobjects` que podem utilitzar: des de figures geomètriques fins a grafs, incloent-hi text i imatges:
 
 <Image src="/images/mobjects_example.png"/>
 <Accordion>
-  <AccordionItem title="Código para generar este ejemplo">
+  <AccordionItem title="Codi per generar aquest exemple">
     <PyCode file='mobjects_examples.py'/>
   </AccordionItem>
 </Accordion>
 
 
-## Agregando `Mobject`s a una escena
+## Afegint `Mobject`s a una escena
 
-Para poder _ver_ un `Mobject` en nuestra `Scene`, debemos hacer dos cosas:
-1. Instanciar el objeto.
-2. Agregarlo a la escena.
+Per poder _veure_ un `Mobject` a la nostra `Scene`, hem de fer dues coses:
+1. Instanciar l'objecte.
+2. Afegir-lo a l'escena.
 
-En el ejemplo anterior hemos instanciado diferentes tipos de `Mobject` y los hemos agregado a la escena con el método `add`, el cual pertenece a la clase `Scene`. Hay más formas de agregar `Mobjects` a las escenas pero por el momento nos conformaremos con `add`.
+En l'exemple anterior hem instanciat diferents tipus de `Mobject` i els hem afegit a l'escena amb el mètode `add`, que pertany a la classe `Scene`. Hi ha més maneres d'afegir `Mobjects` a les escenes, però de moment ens conformarem amb `add`.
 
 <PyCode file='add_square_example.py'/>
 
-## Propiedades de los `Mobject`
+## Propietats dels `Mobject`
 
-Los Mobjects tienen varios métodos y atributos que heredan de la clase `Mobject` y que podemos utilizar para manipular sus propiedades.
+Els Mobjects tenen diversos mètodes i atributs que hereten de la classe `Mobject` i que podem utilitzar per manipular-ne les propietats.
 
-Cada tipo de `Mobject` tiene propiedades particulares, pero algunas de ellas son genéricas. Debido a que el objetivo es generar animaciones, `Manim` usa muy habitualmente el decorador `property` para definir `getters` y `setters` para esas propiedades, así como verbos específicos para poder modificar dicha propiedad. Algunas de sus propiedades más comunmente usadas y sus métodos asociados son:
+Cada tipus de `Mobject` té propietats particulars, però algunes són genèriques. Com que l'objectiu és generar animacions, `Manim` utilitza molt habitualment el decorador `property` per definir `getters` i `setters` per a aquestes propietats, així com verbs específics per poder modificar-les. Algunes de les seves propietats més utilitzades i els seus mètodes associats són:
 
-- Posición:
-  - `get_center`: Devuelve un array con las coordenadas del centro del objeto.
-  - `set_x`: Setea el valor de la coordenada x del objeto.
-  - `set_y`: Setea el valor de la coordenada y del objeto.
-  - `set_z`: Setea el valor de la coordenada z del objeto.
-  - `move_to`: Setea las coordenadas x, y, z del objeto.
-  - `next_to`: Setea las coordenadas x, y, z del objeto relativas a otro objeto.
-  - `to_edge`: Setea las coordenadas x, y, z del objeto relativas a un borde de la escena.
-  - `to_corner`: Setea las coordenadas x, y, z del objeto relativas a una esquina de la escena.
-  - `shift`: Desplaza las coordenadas x, y, z del objeto.
-- Tamaño:
-  - `get_height`: Devuelve la altura del objeto.
-  - `get_width`: Devuelve la anchura del objeto.
-  - `get_left`: Devuelve las coordenadas del punto más a la izquierda del objeto.
-  - `get_right`: Devuelve las coordenadas del punto más a la derecha del objeto.
-  - `get_top`: Devuelve las coordenadas del punto más alto del objeto.
-  - `get_bottom`: Devuelve las coordenadas del punto más bajo del objeto.
-  - `scale`: Escala el objeto proporcionalmente en todas direcciones.
-  - `stretch`: Escala un objeto en proporción a un vector definido.
-  - `stretch_to_fit_width`: Escala un objeto horizontalmente.
-  - `stretch_to_fit_height`: Escala un objeto horizontalmente.
-- Rotación:
-  - `rotate`: Aplica una rotación  a partir de un ángulo, un eje y un punto fijo dados.
-  - `flip`: Preset de `rotate` con un ángulo de 180º y aplicado a ejes en el plano. 
-  - `rotate_about_origin`. Similar a `rotate` pero usando el centro de la escena como punto fijo.
+- Posició:
+  - `get_center`: Retorna un array amb les coordenades del centre de l'objecte.
+  - `set_x`: Estableix el valor de la coordenada x de l'objecte.
+  - `set_y`: Estableix el valor de la coordenada y de l'objecte.
+  - `set_z`: Estableix el valor de la coordenada z de l'objecte.
+  - `move_to`: Estableix les coordenades x, y, z de l'objecte.
+  - `next_to`: Estableix les coordenades x, y, z de l'objecte en relació amb un altre objecte.
+  - `to_edge`: Estableix les coordenades x, y, z de l'objecte en relació amb una vora de l'escena.
+  - `to_corner`: Estableix les coordenades x, y, z de l'objecte en relació amb una cantonada de l'escena.
+  - `shift`: Desplaça les coordenades x, y, z de l'objecte.
+- Mida:
+  - `get_height`: Retorna l'alçada de l'objecte.
+  - `get_width`: Retorna l'amplada de l'objecte.
+  - `get_left`: Retorna les coordenades del punt més a l'esquerra de l'objecte.
+  - `get_right`: Retorna les coordenades del punt més a la dreta de l'objecte.
+  - `get_top`: Retorna les coordenades del punt més alt de l'objecte.
+  - `get_bottom`: Retorna les coordenades del punt més baix de l'objecte.
+  - `scale`: Escala l'objecte proporcionalment en totes les direccions.
+  - `stretch`: Escala un objecte proporcionalment a un vector definit.
+  - `stretch_to_fit_width`: Escala un objecte horitzontalment.
+  - `stretch_to_fit_height`: Escala un objecte verticalment.
+- Rotació:
+  - `rotate`: Aplica una rotació a partir d'un angle, un eix i un punt fix determinats.
+  - `flip`: Preset de `rotate` amb un angle de 180º i aplicat als eixos del pla.
+  - `rotate_about_origin`: Similar a `rotate`, però utilitzant el centre de l'escena com a punt fix.
 
 
-Aquí tenemos un ejemplo sencillo de cómo podemos aplicar algunas de estas modificaciones de las propiedades a un `Triangle`:
+Aquí tenim un exemple senzill de com podem aplicar algunes d'aquestes modificacions de les propietats a un `Triangle`:
 
 <PyCode file="mobjects_common_properties.py" />
 
@@ -83,62 +83,56 @@ Aquí tenemos un ejemplo sencillo de cómo podemos aplicar algunas de estas modi
 
 ## `Submobjects`
 
-Los `Mobjects` pueden contener otros `Mobjects`. Esto es particularmente interesante a la hora de agrupar varios `Mobjects` en una sola unidad, a la hora de construir objetos compuestos o incluso a la hora de generar copias de un conjunto de objetos.
+Els `Mobjects` poden contenir altres `Mobjects`. Això és especialment interessant a l'hora d'agrupar diversos `Mobjects` en una sola unitat, de construir objectes compostos o fins i tot de generar còpies d'un conjunt d'objectes.
 
-Podemos agregar `submobjects` usando el método `add` y podemos encontrar los `submobjects` de un `Mobject` usando la propiedad `submobjects`.
+Podem afegir `submobjects` utilitzant el mètode `add` i podem trobar els `submobjects` d'un `Mobject` utilitzant la propietat `submobjects`.
 
 <PyCode file="triforce.py" />
 
 <Image src="/images/triforce_example.png" />
 
-En la consola veremos el siguiente output:
+A la consola veurem la sortida següent:
 
 ```sh
 [Triangle, Triangle]
 ```
 
-Esto es porque el triángulo `triangle_1` actúa como el `Mobject` base y no se contabiliza a si mismo como parte de sus `submobjects`.
+Això és perquè el triangle triangle_1 actua com a Mobject base i no es comptabilitza a si mateix com a part dels seus submobjects.
 
-<Aside type="caution">¡No confundas el método `add` de `Scene` con el de los `Mobjects`!</Aside>
+<Aside type="caution">No confonguis el mètode `add` de `Scene` amb el dels `Mobjects`!</Aside>
 
 ## VMobjects
+Dins dels Mobjects tenim diverses famílies. La més gran de totes són els Vectorized Mobjects o VMobjects.
 
-Dentro de los `Mobjects` tenemos varias familias. La más grande de ellas son los _Vectorized_ `Mobjects` o `VMobjects`.
+Ja n'hem vist alguns exemples: els quadrats, els triangles i fins i tot el text són VMobjects.
 
-Ya hemos visto algunos ejemplos: Los cuadrados, los triángulo e incluso el texto son `VMobjects`.
+Una imatge normal es pot definir com un array de píxels. Cada píxel és un quadrat d'un color determinat. Tots junts formen la imatge final.
 
-Una imagen normal se puede definir como un array de pixels. Cada píxel es un cuadrado de un color determinado. Juntos conforman la imagen final. 
-
-Sin embargo, una imagen vectorial consiste en un conjunto de **puntos** unidos entre sí mediante <a href='https://es.wikipedia.org/wiki/Curva_de_B%C3%A9zier' target="_blank"> **curvas de Bézier**</a>.
+En canvi, una imatge vectorial consisteix en un conjunt de punts units entre si mitjançant <a href='https://es.wikipedia.org/wiki/Curva_de_B%C3%A9zier' target="_blank">corbes de Bézier</a>.
 
 <Image src="https://www.soloimprenta.es/img/ybc_blog/post/Soloimprenta-banner-vector-pixel-1500x600.jpg"/>
 
-<Aside>Cada método tiene sus ventajas. Las imágenes son fácilmente modificables a nivel de pixel. Las imágenes vectoriales son más adecuadas si queremos escalar indefinidamente sin perder resolución o si queremos aplicar transformaciones a las curvas.</Aside>
+<Aside>Cada mètode té els seus avantatges. Les imatges són fàcilment modificables a nivell de píxel. Les imatges vectorials són més adequades si volem escalar indefinidament sense perdre resolució o si volem aplicar transformacions a les corbes.</Aside>
 
+Els VMobjects funcionen de manera similar a les imatges vectorials: consisteixen en un conjunt de punts units entre si mitjançant corbes de Bézier.
 
-Los `VMobjects` funcionan de forma similar a las imágenes vectoriales: Consisten en un conjunto de puntos unidos entre sí mediante curvas de Bézier.
+Com que es tracta de punts i corbes, podem crear una infinitat d'objectes que es poden escalar sense perdre definició.
 
-Al tratarse de puntos y curvas, podemos crear infinidad de objetos que pueden ser escalados sin perder definición.
+Habitualment, les corbes de Bézier es defineixen a partir de dos punts i un o diversos tiradors. Gestionar tots i cadascun dels punts i tiradors pot arribar a ser molt complicat. Per sort, Manim fa gran part de la feina per nosaltres.
 
-Habitualmente, las curvas de Bézier se definen en base a dos puntos y uno o varios tiradores. Gestionar todos y cada uno de los puntos y tiradores puede llegar a ser muy complicado. Por suerte, `Manim` hace gran parte del trabajo por nosotros.
-
-Aquí tenemos un ejemplo de cómo podemos definir un cuadrado como 5 puntos unidos entre sí formando una figura cerrada. Si seteamos los puntos como esquinas, `Manim` automáticamente los unirá de forma secuencial. Podemos aplicar un suavizado a varios de esos puntos para obtener diferentes figuras.
+Aquí tenim un exemple de com podem definir un quadrat com a 5 punts units entre si formant una figura tancada. Si establim els punts com a cantonades, Manim els unirà automàticament de manera seqüencial. Podem aplicar un suavitzat a diversos d'aquests punts per obtenir figures diferents.
 
 <PyCode file="manual_squares.py" />
 
 <Image src="/images/manual_squares.png" />
 
-<Aside>**¿Por qué 5 puntos y no 4?** `Manim` sigue los puntos de forma secuencial. Si establecemos 4 puntos, `Manim` entenderá que queremos una figura abierta con cuadro vértices y 3 lados. Para cerrarlo por completo, es necesario repetir el punto inicial al final.</Aside>
+<Aside>**Per què 5 punts i no 4?** `Manim` segueix els punts de manera seqüencial. Si establim 4 punts, `Manim` entendrà que volem una figura oberta amb quatre vèrtexs i 3 costats. Per tancar-la completament, cal repetir el punt inicial al final.</Aside>
 
+Afegint coloraines als VMobjects (i altres coses xules)
+Un altre avantatge que presenten els VMobjects és que hi podem afegir colors. Manim distingeix entre la vora i el farciment, les propietats dels quals podem modificar per separat. Per exemple, podem modificar el gruix de la vora, l'opacitat i fins i tot afegir-hi degradats de colors.
 
-## Agregando colorinchis a los VMobjects (y otras cosas chulas)
+<PyCode file="color_circles.py" /> <Image src="/images/color_circles.png" />
 
-Otra ventaja que presentan los `VMobjects` es que podemos agregarles colores. `Manim` distingue entre el borde y el relleno, cuyas propiedades podemos modificar por separado. Por ejemplo, podemos modificar el grosor del borde, la opacidad e incluso agregar gradientes de colores.
+Per consultar una llista completa dels colors que ofereix Manim, visita <a href="https://docs.manim.community/en/v0.20.1/reference/manim.utils.color.manim_colors.html#module-manim.utils.color.manim_colors" target="blank">la documentació</a>.
 
-<PyCode file="color_circles.py" />
-<Image src="/images/color_circles.png" />
-
-Para un listado completo de los colores que ofrece `Manim` vista <a href="https://docs.manim.community/en/v0.20.1/reference/manim.utils.color.manim_colors.html#module-manim.utils.color.manim_colors" target="blank"> la documentación</a>.
-
-Ahora que ya sabemos cómo usar los `Mobjects`, podemos comenzar con las distintas implementaciones que `Manim` trae por defecto.
-
+Ara que ja sabem com utilitzar els Mobjects, podem començar a veure les diferents implementacions que Manim porta per defecte.
