@@ -1,8 +1,8 @@
 ---
-title: Imágenes
-description: Renderizando imágenes
+title: Imágenes y SVGs
+description: Renderizando imágenes y SVGs
 sidebar:
-  order: 6
+  order: 5
 ---
 
 import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
@@ -10,8 +10,55 @@ import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
+import MediaCode  from '@components/MediaCode.astro'
+import AccordionItem from '@components/AccordionItem.astro'
+
+Hay dos formas principales de renderizar imágenes en `Manim`:
+
+- `ImageMobject`: Renderiza imágenes en los formatos habituales (jpg, jpeg y png).
+- `SVGMobject`: Un SVG es un Scalable Vector Graphics, es decir, utiliza el mismo lenguaje vectorial de puntos y curvas que los `VMobjects` y, por tanto, puede tratarse como tal.
 
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+## ImageMobjects
 
+Una imagen como un jpg o un png puede describirse (simplificando mucho) como una cuadrícula de píxeles, que a su vez puede trasladarse al código como una matriz compuesta por arrays de 3 o 4 dimensiones: rojo, verde, azul y alfa para la opacidad.
+
+Por ello, `Manim` puede leer imagenes desde el disco y renderizarlas con apenas unas pocas líneas de código. Para ello le indicamos una ruta y `Manim` usa `Pillow` para cargar la imagen:
+
+<MediaCode type="image" imageData={{src: "/images/image_example.png"}} codeData={{file: "image_example.py"}}/>
+
+Ah, pero como al final las imágenes son matrices de píxeles, podemos usar numpy para definir una imagen. Nosotros le definimos colores en filas y columnas e interpola donde sea necesario:
+
+<MediaCode type="image" imageData={{src: "/images/image_from_array_example.png"}} codeData={{file: "image_from_array_example.py"}}/>
+
+
+## SVGMobjects
+
+De forma similar, podemos usar archivos SVG en `Manim` mediante la clase `SVGMobject`. Internamente, `Manim` los trata como si fueran un `VMobject`, a diferencia de `ImageMobject` que es tratado como un `Mobject`.
+
+
+<MediaCode type="image" imageData={{src: "/images/svg_example.png"}} codeData={{file: "svg_example.py"}}/>
+
+
+## ¡Ejercicios!
+
+### Ejercicio 1
+
+Crea una función para que puedas renderizar una imagen a partir de una url. 
+
+<Aside type='caution'>¡Eh! ¡Este es difícil! Te recomiendo que uses `urllib.requests`, `io.BytesIO` y pruebes a ver qué consigues sacar.</Aside>
+
+<AccordionItem title="Solución al ejercicio 1">
+  <MediaCode type="image" imageData={{src: "/images/image_ex.png"}} codeData={{file: "image_ex.py"}}/>
+</AccordionItem>
+
+### Ejercicio 2
+
+Crea una función para que puedas renderizar un SVG una a partir de una url.
+
+<Aside type='caution'>Aunque parezca similar al anterior, en este caso tienes que descargar el SVG primero y luego lo podrás renderizar.</Aside>
+
+<AccordionItem title="Solución al ejercicio 2">
+  <MediaCode type="image" imageData={{src: "/images/svg_ex.png"}} codeData={{file: "svg_ex.py"}}/>
+</AccordionItem>
 

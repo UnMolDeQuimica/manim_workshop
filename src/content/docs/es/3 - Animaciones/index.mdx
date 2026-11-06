@@ -10,17 +10,69 @@ import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
+import MediaCode  from '@components/MediaCode.astro'
+import AccordionItem from '@components/AccordionItem.astro'
+
+¡Uff! Menudo paseo lo de los `Mobjects`. Vamos ahora a ahora a algo más dinámico: **Las animaciones**. Aquí también hay mucho que morder, pero empezaremos por lo básico.
+
+## Animando propiedades básicas
+
+En `Manim` las animaciones funcionan recalculando una propiedad de un `Mobject` de forma que vemos un cambio en la pantalla. Para esto tenemos varias opciones pero la más sencilla consiste en utilizar el método `play` de la clase `Scene` junto con el método `animate` de los `Mobjects`.
+
+Al hacer esto, `Manim` recalcula la propiedad para cada fotograma y la muestra en pantalla. Una de las propiedades más sencillas que podemos modificar es la posición. En el apartado de `Mobjects` hablamos sobre como se pueden usar métodos como `shift`, `move_to` o `to_edge`. Vamos a aplicarlos en un ejemplo. 
+
+<MediaCode type="video" videoData={{src: "position_animation_example.mp4"}} codeData={{file: "position_animation_example.py"}}/>
+
+Por supuesto, podemos animar muchas otras propiedades, especialmente las que ya conocemos: tamaño, color, rotación, opacidad, etc.
+
+<MediaCode type="video" videoData={{src: "properties_animation_example.mp4"}} codeData={{file: "properties_animation_example.py"}}/>
 
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+## Cambiando el ritmo
 
-## Escena
+La animación pinta bien, pero ahora mismo todas las animaciones duran exactamente lo mismo y no hay pausas entre ellas.
 
-## Mobjects
+Podemos cambiar la duración de las animaciones utilizando el parámetro `run_time` de la función `play`.
 
-## Cámara
+Para agregar pausas podemos usar el método `wait` de la clase `Scene`.
 
-## Animaciones
+<MediaCode type="video" videoData={{src: "paused_animation_example.mp4"}} codeData={{file: "paused_animation_example.py"}}/>
 
-## Renderizadores
+## He devenido target_mobject, el destructor de mundos
+
+Otro método muy interesante de los `Mobjects` es `become`. Cuando `Manim` calcula una animación, lo que suele hacer es una interpolación entre las propiedades del objeto inicial y las propiedades del objeto final. Por ejemplo, cuando hemos aplicado `shift` al cuadrado de antes, `Manim` ha generado una copia del cuadrado en la posición final, ha interpolado las propiedades que cambian (en este caso la posición) y ha ido generando copias del cuadro en cada fotograma con las nuevas propiedades dando la ilusión de movimiento.
+
+Este proceso lo podemos aplicar no solo a copias de un `Mobject` sino también a otros `Mobjects` con valores totalmente diferentes en sus propiedades mediante el método `become`.
+
+<MediaCode type="video" videoData={{src: "become_animation_example.mp4"}} codeData={{file: "become_animation_example.py"}}/>
+
+
+## Explorando el potencial
+
+Agrego este punto para que podamos observar el potencial de `Manim` a la hora de crear animaciones. El siguiente ejemplo incluye cosas que no hemos visto aún pero es demasiado chulo como para dejarlo fuera. Está sacado del tutorial de `Manim` del canal de YouTube <a href="https://www.youtube.com/@Varniex" target="blank">Varniex</a>>.
+
+<MediaCode type="video" videoData={{src: "rose_pattern_example.mp4"}} codeData={{file: "rose_pattern_example.py"}}/>
+
+
+## ¡Ejercicios!
+
+### Ejercicio 1
+
+Escoge un `Mobject` cualquiera (incluso de ejemplos anteriores) y haz una animación en la que se cambien su color y su posición a la vez. No secuencialmente.
+
+<Aside type='tip'>Puedes encadenar cambios de propiedades uno tras otro. ¡Prueba!</Aside>
+
+<AccordionItem title="Solución al ejercicio 1">
+  <MediaCode type="video" videoData={{src: "animation_ex_1.mp4"}} codeData={{file: "animations_ex_1.py"}}/>
+</AccordionItem>
+
+### Ejercicio 2
+
+Crea una colección de `Mobjects` como por ejemplo `Dot`, ordénalos en horizontal y haz que suban secuencialmente y que luego bajen todos a la vez. Puntos extra si agregas una pausa.
+
+<Aside type='tip'>Usa `play` dentro de un bucle `for`</Aside>
+
+<AccordionItem title="Solución al ejercicio 2">
+  <MediaCode type="video" videoData={{src: "animation_exercise_2.mp4"}} codeData={{file: "animations_ex_2.py"}}/>
+</AccordionItem>
 

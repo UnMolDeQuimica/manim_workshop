@@ -15,6 +15,7 @@
     "astro": "^7.2.10",
     "astro-mermaid": "^2.1.0",
     "expressive-code-typewriter": "^1.0.0",
+    "manimgx": "^0.1.1",
     "mermaid": "^11.17.2",
     "sharp": "^0.35.3",
     "starlight-codeblock-fullscreen": "^2.0.0",

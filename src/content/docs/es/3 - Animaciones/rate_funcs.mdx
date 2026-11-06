@@ -2,7 +2,7 @@
 title: Rate functions
 description: Resumen sobre qué es una animación en Manim
 sidebar:
-  order: 6
+  order: 4
 ---
 
 import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
@@ -10,17 +10,39 @@ import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
+import MediaCode  from '@components/MediaCode.astro'
+import AccordionItem from '@components/AccordionItem.astro'
+
+Las animaciones que hemos hecho hasta ahora tienen un ritmo particular. Pareciera que empieza lento y poco a poco va acelerando hasta que vuelve a frenar.
+
+## Rate functions
+
+Esto es debido a las `rate_functions`: funciones que definen que tan rápido progresa una animación. La documentación de `Manim` nos ofrece unas gráficas que ayudan a aclarar cómo funcionan las `rate_functions` visualmente:
+
+<Image src="/images/rate_func_example.png"/>
 
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+Para que queden aún más claras, vamos a hacer animaciones que representen algunas de estas funciones.
 
-## Escena
+<MediaCode type="video" videoData={{src: "rate_funcs_example.mp4"}} codeData={{file: "rate_funcs_example.py"}}/>
 
-## Mobjects
 
-## Cámara
+## ¡Ejercicios!
 
-## Animaciones
+### Ejercicio 1
 
-## Renderizadores
+Combina lo aprendido en este apartado y en el apartado anterior de Grupos de Animaciones y juega un poco a ver qué consigues.
+
+<AccordionItem title="Solución al ejercicio 1">
+  <MediaCode type="video" videoData={{src: "rate_funcs_ex_1.mp4"}} codeData={{file: "rate_funcs_ex_1.py"}}/>
+</AccordionItem>
+
+
+### Ejercicio 2
+
+Las `rate_functions` son funciones que dependen de una variable temporal `t` que va de 0 a 1. Crea una `rate_function` propia y aplícala a una animación.
+
+<AccordionItem title="Solución al ejercicio 2">
+  <MediaCode type="video" videoData={{src: "rate_funcs_ex_2.mp4"}} codeData={{file: "rate_funcs_ex_2.py"}}/>
+</AccordionItem>
 

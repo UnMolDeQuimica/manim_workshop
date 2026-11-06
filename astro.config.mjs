@@ -51,7 +51,8 @@ export default defineConfig({
 			],
 			components: {
 				Footer: './src/components/CustomFooter.astro'
-			}
+			},
+			customCss: ['./src/styles/custom.css'],
 		}),
 		mermaid(),
 

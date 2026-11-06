@@ -1,0 +1,40 @@
+---
+import Image from './Image.astro';
+import Video from './Video.astro';
+import PyCode from './PyCode.astro';
+
+const { type, imageData, videoData, codeData } = Astro.props;
+---
+
+<div class="media-code-wrapper">
+  <div class="media-top">
+    {type === 'image' && imageData && <Image {...imageData} />}
+    {type === 'video' && videoData && <Video {...videoData} />}
+  </div>
+
+  <div class="code-bottom">
+    <PyCode {...codeData} />
+  </div>
+</div>
+
+<style>
+  .media-code-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    overflow: hidden; 
+  }
+
+  .media-top,
+  .code-bottom {
+    margin: 0;
+    padding: 0;
+  }
+
+  .media-top :global(*),
+  .code-bottom :global(*) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>

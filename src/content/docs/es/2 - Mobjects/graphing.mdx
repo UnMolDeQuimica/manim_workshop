@@ -2,7 +2,7 @@
 title: Gráficas
 description: Graficando funciones y datos
 sidebar:
-  order: 7
+  order: 6
 ---
 
 import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
@@ -10,8 +10,45 @@ import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
+import MediaCode  from '@components/MediaCode.astro'
+import AccordionItem from '@components/AccordionItem.astro'
 
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+Una de las partes más potentes de `Manim` es poder representar y animar gráficas. Aquí veremos apenas unos pocos ejemplos.
+
+## Axes
+
+La clase `Axes` es la forma más sencilla de gráfico que hay en `Manim`. Nos permite dibujar funciones sencillas sin mucha complicación. Para ello definimos un rango en los ejex x e y y le agregamos la función que queremos graficar usando `plot`.
+
+<MediaCode type="image" imageData={{src: "/images/axes_example.png"}} codeData={{file: "axes_example.py"}}/>
+
+Le hemos pasado a la clase `Axes` una configuración para los ejes tanto globalmente como específicamente para el eje y. La configuración que podemos aplicar es la que corresponde a la clase <a href="https://docs.manim.community/en/stable/reference/manim.mobject.graphing.number_line.NumberLine.html#manim.mobject.graphing.number_line.NumberLine" target="blank">`NumberLine`</a>
+
+## NumberPlane
+
+Hay otras clases como `NumberPlane` que heredan de `Axes` con funcionalides extra. En este caso concreto, renderiza un plano sobre el que luego podremos agregar funciones.
+
+<MediaCode type="image" imageData={{src: "/images/number_plane_example.png"}} codeData={{file: "number_plane_example.py"}}/>
 
 
+## ¡Ejercicios!
+
+### Ejercicio 1
+
+Genera una imagen de una función sencilla como una función polinómica o una trigonométrica en un `NumberPlane`.
+
+<Aside type='danger'>No incluyas etiquetas en los ejes o, por lo menos, haz que se generen con Typst. De lo contrario te pedirá usar Tex y no lo hemos instalado para este taller.</Aside>
+
+<AccordionItem title="Solución al ejercicio 1">
+  <MediaCode type="image" imageData={{src: "/images/graphing_ex_1.png"}} codeData={{file: "graphing_ex_1.py"}}/>
+</AccordionItem>
+
+### Ejercicio 2
+
+Genera una imagen de un cardiode utilizando esta vez la clase `PolarPlane`.
+
+<Aside type='tip'>Por si no sabes la función en coordenadas polares para un cardioide, es una función que depende del ángulo theta de la siguiente manera: `f(θ) = a · (1 - sin(θ))`. ¡Prueba a jugar con el parámetro `a` a ver que sale!</Aside>
+
+<AccordionItem title="Solución al ejercicio 2">
+  <MediaCode type="image" imageData={{src: "/images/graphing_ex_2.png"}} codeData={{file: "graphing_ex_2.py"}}/>
+</AccordionItem>

@@ -1,0 +1,105 @@
+---
+// src/components/AccordionItem.astro
+interface Props {
+  title: string;
+  open?: boolean;
+}
+
+const { title, open = false } = Astro.props;
+---
+
+<details class="accordion-item" open={open}>
+  <summary class="accordion-summary">
+    <span class="accordion-title">{title}</span>
+    <svg
+      class="accordion-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+    </svg>
+  </summary>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <slot />
+    </div>
+  </div>
+</details>
+
+<style>
+  .accordion-item {
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  .accordion-item:first-child {
+    border-top: 1px solid var(--sl-color-gray-5);
+  }
+
+  .accordion-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    user-select: none;
+  }
+
+  /* Hide default marker */
+  .accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-summary:hover {
+    color: var(--sl-color-accent-high);
+  }
+
+  .accordion-summary:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .accordion-icon {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .accordion-item[open] .accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  /* CSS Grid height animation trick */
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease-out;
+  }
+
+  .accordion-item[open] .accordion-content {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-content-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .accordion-content-inner > :global(:first-child) {
+    margin-top: 0;
+  }
+
+  .accordion-content-inner > :global(:last-child) {
+    margin-bottom: 1rem;
+  }
+</style>

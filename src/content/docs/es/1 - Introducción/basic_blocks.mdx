@@ -5,22 +5,57 @@ sidebar:
   order: 4
 ---
 
-import { Card, CardGrid, LinkButton, Aside } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkButton, Aside, Steps } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
 import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
+import PyCode  from '@components/PyCode.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
 
+export const manimShCodeExample = `uv run manim first_animation.py -p`
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+<Quote author="Antonio Machado" source="Campos de Castilla">Caminante, no hay camino, se hace camino al andar.</Quote>
 
-## Escena
+## Esquema general
+Después de haber creado nuestras primeras animaciones, vamos a entrar un poco más en detalle. Abajo podemos ver un diagrama resumen sobre como se conectan las principales piezas de `Manim`. 
 
-## Mobjects
+<Image src="/images/manim-diagram-es.svg"/>
 
-## Cámara
 
-## Animaciones
+## En pocas palabras
+- En el código se define una clase que hereda de la clase `Scene` y se sobreescribe el método `construct` para definir nuestra escena.
+- En nuestra escena tendremos instancias de clases llamadas `MObjects` sobre las cuales podemos aplicar `Animations`.
+- La clase `Scene` instancia un `Manager` encargado de coordinar los distintos pasos del renderizado.
+- El `Manager` llama a los diferentes `Renderers` para que, a través de las `Cameras` capturen a los `MObjects` de una escena y las transformaciones que las `Animations` aplican sobre ellos.
+- La información enviada de las `Cameras` a los `Renderers` es procesada y mandada al `SceneFileWriter` para que genere los archivos finales, ya sean imágenes o videos.
 
-## Renderizadores
+<Aside type="tip">
+Esto es solo un resúmen corto y sencillo para que entendamos brevemente cómo funciona `Manim` por dentro. Para más detalles <a href="https://docs.manim.community/en/stable/guides/deep_dive.html" target="_blank">ve a la documentación</a>.
+</Aside>
 
+A continuación nos iremos adentrando de forma más profunda en cada uno de estos componentes para ir entendiendo cómo podemos utilizarlos para generar animaciones, pero antes de eso debemos entender la anatomía de una escena de `Manim`.
+
+## Pequeño recap
+
+Por ahora, insistiré un poco en la estructura básica de una animación en Manim usando nuestra primera animación como ejemplo:
+
+<PyCode file='first_animation.py'/>
+
+<Steps>
+1. importamos todo de la librería `Manim`. No es la mejor práctica, lo sé, pero de esta forma nos podemos concentrar solo en animar y no en hacer imports o agregando texto innecesario.
+
+   <PyCode file='first_animation.py' mark='1'/>
+
+2. Creamos una clase que heredará de la clase `Scene` de `Manim`.
+
+   <PyCode file='first_animation.py' mark='3'/>
+
+3. Sobreescribimos el método `construct` con nuestros `Mobject` y las animaciones que les vamos a aplicar.
+
+   <PyCode file='first_animation.py' mark='4-8'/>
+
+4. Y por último renderizamos nuestra animación desde la terminal.
+
+   <Code code={manimShCodeExample} lang='sh' />
+</Steps>

@@ -1,0 +1,22 @@
+---
+// src/components/Accordion.astro
+interface Props {
+  /** Allow multiple items open at once. If false, uses name attr to make it exclusive. */
+  multiple?: boolean;
+  name?: string;
+}
+
+const { multiple = true, name = "accordion" } = Astro.props;
+---
+
+<div class="accordion" data-multiple={multiple}>
+  <slot />
+</div>
+
+<style>
+  .accordion {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+</style>

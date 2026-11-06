@@ -1,5 +1,5 @@
 ---
-title: Escenas
+title: Escenas, configuración, cámaras, renderizadores y 3D
 description: Vistazo general a los bloques básicos de Manim
 sidebar:
   order: 1
@@ -10,17 +10,58 @@ import Video  from '@components/Video.astro'
 import Image  from '@components/Image.astro'
 import Quote  from '@components/Quote.astro'
 import { ShowcaseProfile, ShowcaseYouTube } from 'starlight-showcases'
+import MediaCode  from '@components/MediaCode.astro'
+
+Nos acercamos a la recta final. Durante todo el taller hemos estado usando la clase `Scene` para renderizar nuestras escenas pero no hemos acabado de entender qué es.
+
+## Configurando una escena
+
+En las escenas dibujamos los `Mobjects` que queremos ver y definimos las animaciones que queremos aplicarles. Al usar funciones como `add` o `play` le estamos diciendo a la escena que tome un `Mobject` y se lo pase a una `Camera` para que esta capture al `Mobject` y lo renderice.
+
+La forma en la que la escena hace esto se puede cambiar y es configurable. 
+
+Respecto a la configuración, podemos usar `config`, una instancia de `ManimConfig` que se crea cada vez que llamamos a `Manim`. Con `config` podemos cambiar propiedades de las escena como el color del fondo, el tamaño de la escena tanto en píxeles como en unidades de `Manim`, el framerate, el nombre del archivo que vamos a generar y mil cosas más.
+
+Por ejemplo, podemos modificar la configuración para hacer vídeos verticales:
 
 
-<Quote author="Duoglas Adams" source="El Restaurante del Fin del Mundo">Al principio se creó el Universo. Eso hizo que se enfadara mucha gente, y la mayoría lo consideró un error.</Quote>
+<MediaCode type="video" videoData={{src: "scene_config_editing.mp4"}} codeData={{file: "scene_config_editing.py"}}/>
 
-## Escena
+## Otros tipos de escenas y cámaras
 
-## Mobjects
+Aparte de la configuración, podemos modificar cómo la escena interactúa con la cámara. Una `Scene` tiene una cámara estática, pero otras como `ZoomedScene` o `MovingCameraScene` pueden hacer auténticas virguerías.
 
-## Cámara
+<MediaCode type="video" videoData={{src: "moved_zoomed_scene.mp4"}} codeData={{file: "moved_zoomed_scene.py"}}/>
+<MediaCode type="video" videoData={{src: "following_graph_camera.mp4"}} codeData={{file: "following_graph_camera.py"}}/>
 
-## Animaciones
+
+## Escenas 3D
+
+Si hay un tipo de escena que merece su propio apartado son las escenas 3D. Hasta ahora hemos trabajado solamente en dos dimensiones, pero `Manim` puede renderizar también en 3D.
+
+Muchos `Mobjects` 2D son aplicables a 3D pero tenemos clases como `Sphere`, `Polyhedra`, `Cylinder` o `Surface` que están específicamente pensados para trabajar en 3 dimensiones.
+
+Para trabajar en 3 dimensiones, en lugar de `Scene` usamos `ThreeDScene` y en lugar de `Camera` usamos la `ThreeDCamera`
+
+Aquí vienen algunos ejemplos de lo que se puede hacer en 3 dimensiones con `Manim`.
+
+
+<MediaCode type="video" videoData={{src: "three_d_example_cairo.mp4"}} codeData={{file: "three_d_scene_example.py"}}/>
+
 
 ## Renderizadores
 
+Si `ManimConfig` se encarga de la configuración de la escena, las `Cameras` de capturar los `Mobjects` de la escena y las escenas de contener a los `Mobjects` y las animaciones que se les aplican, los `renderers` son las clases encargadas de convertir toda esa información en imágenes que se puedan ver.
+
+Por defecto, `Manim` usa `Cairo`, el cual es muy bueno para animaciones en dos dimensiones.
+
+Sin embargo, para tres dimensiones existe uno más potente: `OpenGL`. Al utilizar la GPU para renderizar es, en teoría, más rápido que `Cairo`, más limpio con el 3D y permite muchas más funcionalidades como usar shaders. Por desgracia la implementación de `OpenGL` en `Manim` no está completa desde hace años, incluyendo la documentación y la compatibilidad con todos los `Mobjets` y animaciones. 
+
+
+Para que no parezca que lo menciono solo de pasada, aquí tenemos el mismo ejemplo 3D de antes renderizado con `OpenGL`. Para usarlo podemos pasar el flag `--renderer=opengl` o podemos modificarlo en la configuración de la escena.
+
+
+
+<MediaCode type="video" videoData={{src: "three_d_example_opengl.mp4"}} codeData={{file: "three_d_scene_example.py"}}/>
+
+Podemos ver que es algo diferente. A eso me refiero con la falta de compatibilidad que queda todavía.
