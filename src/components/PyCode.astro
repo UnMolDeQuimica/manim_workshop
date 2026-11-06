@@ -19,9 +19,19 @@ const {
   del,
 } = Astro.props;
 
-const imported = await import(`../manim_code/${file}?raw`);
-const source = imported.default as string;
+const codeFiles = import.meta.glob('../manim_code/**/*.py', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
 
+const filePath = `../manim_code/${file}`;
+
+const source = codeFiles[filePath] as string | undefined;
+
+if (source === undefined) {
+  throw new Error(`Python code file not found: ${filePath}`);
+}
 const sourceLines = source.split('\n');
 
 const firstLine = Math.max(1, start);
